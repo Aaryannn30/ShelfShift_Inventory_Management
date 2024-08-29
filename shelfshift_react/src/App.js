@@ -1,12 +1,12 @@
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
-import Marquee from 'react-fast-marquee';
 import './App.css';
 import Navbar from './Components/Home/Navbar';
 import ShuffleHero from './Components/Home/ShuffleHero';
 import MarqueeBg from './Components/Home/MarqueeBg';
 import { ParallaxHero } from './Components/Home/ParallaxHero';
 import Testimonial from './Components/Home/Testimonial';
+import Pricing from './Components/Pages/Pricing'
 
 const App = () => {
   // const [details, setDetails] = useState([]);
@@ -51,6 +51,7 @@ const App = () => {
       <ShuffleHero />
       <ParallaxHero/>
       <Testimonial/>
+      <Pricing/>
     </>
   );
 }
