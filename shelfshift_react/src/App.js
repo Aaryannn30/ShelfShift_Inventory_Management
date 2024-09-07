@@ -9,9 +9,14 @@ import Testimonial from './Components/Home/Testimonial';
 import Footer from './Components/Home/Footer';
 import Signin from './Components/Home/Signin';
 import Signup from './Components/Home/Signup';
+import PricingCard from './Components/Pages/PricingCard'
+import Pricing from './Components/Pages/Pricing';
+import DSidebar from './Components/Dashboard/DSidebar'
+import Auth from './Components/Home/Auth';
 
 const App = () => {
   return (
+    <>
     <Router>
       <Routes>
         {/* Home Route */}
@@ -24,19 +29,30 @@ const App = () => {
               <ShuffleHero />
               <ParallaxHero />
               <Testimonial />
+              <PricingCard/>
               <Footer />
             </>
           }
-        />
+          />
 
         {/* Signin Route */}
-        <Route path="/signin" element={<Signin />} />
+        <Route path="/signin" element={<Auth />} />
 
         {/* Signup Route */}
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Auth />} />
       </Routes>
     </Router>
+  </>
   );
 }
+
+// const App = () => {
+//   return (
+//     <>
+//       {/* <Pricing/> */}
+//       {/* <DSidebar /> */}
+//     </>
+//   );
+// }
 
 export default App;

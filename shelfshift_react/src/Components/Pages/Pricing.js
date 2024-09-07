@@ -1,248 +1,122 @@
+import React , {useState} from "react";
 import { motion } from "framer-motion";
+import { FiCalendar } from "react-icons/fi";
+import { TbCalendarMonth } from "react-icons/tb";
 
-const SquishyCard = () => {
+const SliderToggle = ({ isMonthly, setIsMonthly }) => {
+    const TOGGLE_CLASSES =
+        "text-sm font-medium flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-1.5 transition-colors relative z-10";
+
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 dark:bg-slate-900">
-            <section className="px-4 py-12">
-                <div className="mx-auto w-fit">
-                    <Card
-                        shape1="circle"
-                        shape2="ellipse"
-                        planType="Individual"
-                        price="$299"
-                        bgColor="bg-indigo-500"
-                    />
-                </div>
-            </section>
-            <section className="px-4 py-12">
-                <div className="mx-auto w-fit">
-                    <Card
-                        shape1="square"
-                        shape2="rect"
-                        planType="Company"
-                        price="$999"
-                        bgColor="bg-purple-500"
-                    />
-                </div>
-            </section>
-            <section className="px-4 py-12">
-                <div className="mx-auto w-fit">
-                    <Card
-                        shape1="triangle"
-                        shape2="rhombus"
-                        planType="Enterprise"
-                        price="$4,999"
-                        bgColor="bg-pink-500"
-                    />
-                </div>
-            </section>
+        <div className="relative flex w-fit items-center rounded-full mt-4">
+            <button
+                className={`${TOGGLE_CLASSES} ${isMonthly ? "text-white" : "text-slate-800"
+                    }`}
+                onClick={() => {
+                    setIsMonthly(true);
+                }}
+            >
+                <FiCalendar className="relative z-10 text-lg md:text-sm" />
+                <span className="relative z-10">Monthly</span>
+            </button>
+            <button
+                className={`${TOGGLE_CLASSES} ${!isMonthly ? "text-white" : "text-slate-800"
+                    }`}
+                onClick={() => {
+                    setIsMonthly(false);
+                }}
+            >
+                <TbCalendarMonth className="relative z-10 text-lg md:text-sm" />
+                <span className="relative z-10">Annually</span>
+            </button>
+            <div
+                className={`absolute inset-0 z-0 flex ${!isMonthly ? "justify-end" : "justify-start"
+                    }`}
+            >
+                <motion.span
+                    layout
+                    transition={{ type: "spring", damping: 15, stiffness: 250 }}
+                    className="h-full w-1/2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600"
+                />
+            </div>
         </div>
     );
 };
 
-const Card = ({ shape1, shape2, planType, price, bgColor }) => {
+const Pricing = () => {
+    const [isMonthly, setIsMonthly] = useState(true);
+
     return (
-        <motion.div
-            whileHover="hover"
-            transition={{
-                duration: 0.8,
-                ease: "easeInOut",
-            }}
-            variants={{
-                hover: {
-                    scale: 1.05,
-                },
-            }}
-            className={`relative h-96 w-80 shrink-0 overflow-hidden rounded-xl ${bgColor} p-8`}
-        >
-            <div className="relative z-10 text-white">
-                <span className="mb-3 block w-fit rounded-full bg-white/30 px-3 py-0.5 text-sm font-light text-white">
-                    {planType}
-                </span>
-                <motion.span
-                    initial={{ scale: 0.85 }}
-                    variants={{
-                        hover: {
-                            scale: 1,
-                        },
-                    }}
-                    transition={{
-                        duration: 0.8,
-                        ease: "easeInOut",
-                    }}
-                    className="my-2 block origin-top-left font-mono text-6xl font-black leading-[1.2]"
-                >
-                    {price}/
-                    <br />
-                    Month
-                </motion.span>
-                <p className="mt-4">
-                    For individuals who want to understand why their landing pages aren’t working
-                </p>
+        <div className="bg-gray-50 py-8">
+            <div className="container mx-auto text-center">
+                <h2 className="text-4xl font-bold text-gray-900 mb-5">Pricing</h2>
+                <div className="inline-flex space-x-4 mb-4">
+                    <SliderToggle isMonthly={isMonthly} setIsMonthly={setIsMonthly}/>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {/* Individuals */}
+                    <div className="bg-transparent shadow-lg rounded-lg py-16 px-6 transition-all duration-300 hover:border-purple-500 hover:bg-white ">
+                        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Individuals</h3>
+                        <div className="text-4xl font-bold text-gray-900 mb-2">$0</div>
+                        <div className="text-sm font-medium text-gray-500">/user /month</div>
+                        <p className="mt-4 text-gray-700">For individuals looking to up their productivity gains. Free forever.</p>
+                        <ul className="mt-4 space-y-2">
+                            <li className="text-gray-900"><span>✔</span> 1 Team Member</li>
+                            <li className="text-gray-900"><span>✔</span> 3 Boards</li>
+                            <li className="text-gray-900"><span>✔</span> 5 Workflows</li>
+                            <li className="text-gray-400"><span>✖</span> Upgraded Support</li>
+                            <li className="text-gray-400"><span>✖</span> Custom Branding</li>
+                            <li className="text-gray-400"><span>✖</span> Self Host</li>
+                        </ul>
+                        <button className="mt-6 py-2 px-4 bg-black text-white font-semibold rounded-lg w-full transition-all duration-300 hover:bg-white hover:text-black border hover:border-black">
+                            TRY IT NOW
+                        </button>
+                    </div>
+
+                    {/* Teams */}
+                    <div className="bg-white shadow-lg rounded-lg p-6 border-[1px] border-black transition-all duration-300 hover:border-purple-500 hover:bg-white">
+                        <div className="relative">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4">Teams</h3>
+                            <span className="absolute top-0 right-0 px-3 py-0.5 bg-purple-500 text-white text-xs font-semibold rounded-full">Most Popular</span>
+                        </div>
+                        <div className="text-4xl font-bold text-gray-900 mb-2">$12</div>
+                        <div className="text-sm font-medium text-gray-500">/user /month</div>
+                        <p className="mt-4 text-gray-700">For teams looking to scale their team efficiently. Stay on track.</p>
+                        <ul className="mt-4 space-y-2">
+                            <li className="text-gray-900"><span>✔</span> ∞ Team Members</li>
+                            <li className="text-gray-900"><span>✔</span> ∞ Boards</li>
+                            <li className="text-gray-900"><span>✔</span> ∞ Workflows</li>
+                            <li className="text-gray-900"><span>✔</span> Upgraded Support</li>
+                            <li className="text-gray-400"><span>✖</span> Custom Branding</li>
+                            <li className="text-gray-400"><span>✖</span> Self Host</li>
+                        </ul>
+                        <button className="mt-6 py-2 px-4 bg-purple-500 text-white font-semibold rounded-lg w-full transition-all duration-300 hover:bg-white hover:text-black border hover:border-black">
+                            TRY IT NOW
+                        </button>
+                    </div>
+
+                    {/* Enterprise */}
+                    <div className="shadow-lg rounded-lg p-6 border-black transition-all duration-300 hover:border-purple-500 hover:bg-white">
+                        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Enterprise</h3>
+                        <div className="text-4xl font-bold text-gray-900 mb-2">$24</div>
+                        <div className="text-sm font-medium text-gray-500">/user /month</div>
+                        <p className="mt-4 text-gray-700">For enterprises looking to see new heights. Manage without the stress.</p>
+                        <ul className="mt-4 space-y-2">
+                            <li className="text-gray-900"><span>✔</span> ∞ Team Members</li>
+                            <li className="text-gray-900"><span>✔</span> ∞ Boards</li>
+                            <li className="text-gray-900"><span>✔</span> ∞ Workflows</li>
+                            <li className="text-gray-900"><span>✔</span> Enterprise Support</li>
+                            <li className="text-gray-900"><span>✔</span> Custom Branding</li>
+                            <li className="text-gray-900"><span>✔</span> Self Host</li>
+                        </ul>
+                        <button className="mt-6 py-2 px-4 bg-black text-white font-semibold rounded-lg w-full transition-all duration-300 hover:bg-white hover:text-black border hover:border-black">
+                            TRY IT NOW
+                        </button>
+                    </div>
+                </div>
             </div>
-            <button className="absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white">
-                Get it now
-            </button>
-            <Background shape1={shape1} shape2={shape2} />
-        </motion.div>
+        </div>
     );
 };
 
-const Background = ({ shape1, shape2 }) => {
-    const renderShape = (shape, index) => {
-        const baseAnimation = {
-            hover: {
-                y: index === 0 ? -20 : 20,
-                scale: 1.2,
-            },
-        };
-        
-        switch (shape) {
-            case "circle":
-                return (
-                    <motion.circle
-                        cx="160.5"
-                        cy="114.5"
-                        r="80"
-                        fill="#262626"
-                        variants={baseAnimation}
-                        transition={{
-                            duration: 0.8,
-                            ease: "easeInOut",
-                            delay: index * 0.2,
-                        }}
-                    />
-                );
-            case "ellipse":
-                return (
-                    <motion.ellipse
-                        cx="160.5"
-                        cy="265.5"
-                        rx="100"
-                        ry="40"
-                        fill="#262626"
-                        variants={{
-                            hover: {
-                                scaleX: 1.3,
-                                scaleY: 1.1,
-                                y: 10,
-                            },
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            ease: "easeInOut",
-                            delay: index * 0.2,
-                        }}
-                    />
-                );
-            case "square":
-                return (
-                    <motion.rect
-                        x="100"
-                        y="90"
-                        width="120"
-                        height="120"
-                        fill="#262626"
-                        variants={{
-                            hover: {
-                                rotate: 45,
-                                scale: 1.2,
-                                x: -10,
-                                y: -10,
-                            },
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            ease: "easeInOut",
-                            delay: index * 0.2,
-                        }}
-                    />
-                );
-            case "rect":
-                return (
-                    <motion.rect
-                        x="60"
-                        y="220"
-                        width="200"
-                        height="60"
-                        fill="#262626"
-                        variants={{
-                            hover: {
-                                scaleY: 1.5,
-                                y: -10,
-                            },
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            ease: "easeInOut",
-                            delay: index * 0.2,
-                        }}
-                    />
-                );
-            case "triangle":
-                return (
-                    <motion.polygon
-                        points="160,50 230,180 90,180"
-                        fill="#262626"
-                        variants={{
-                            hover: {
-                                scale: 1.3,
-                                y: -10,
-                            },
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            ease: "easeInOut",
-                            delay: index * 0.2,
-                        }}
-                    />
-                );
-            case "rhombus":
-                return (
-                    <motion.polygon
-                        points="160,80 220,180 160,280 100,180"
-                        fill="#262626"
-                        variants={{
-                            hover: {
-                                scale: 1.2,
-                                rotate: 15,
-                                y: -10,
-                            },
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            ease: "easeInOut",
-                            delay: index * 0.2,
-                        }}
-                    />
-                );
-            default:
-                return null;
-        }
-    };
-
-    return (
-        <motion.svg
-            width="320"
-            height="384"
-            viewBox="0 0 320 384"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="absolute inset-0 z-0"
-            variants={{
-                hover: {
-                    scale: 1.05,
-                },
-            }}
-            transition={{
-                duration: 0.8,
-                ease: "easeInOut",
-            }}
-        >
-            {renderShape(shape1, 0)}
-            {renderShape(shape2, 1)}
-        </motion.svg>
-    );
-};
-
-export default SquishyCard;
+export default Pricing;
