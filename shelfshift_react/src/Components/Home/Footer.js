@@ -1,46 +1,60 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
+import Privacy_Policy from './Privacy_Policy';
+import Terms_Condition from './Terms_Condition';
+import FAQ from './FAQ';
+import Contact from './Contact';
 export default function Footer() {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
   return (
     <div>
       <footer class="w-full bg-gray-900">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 lg:grid-cols-4 lg:gap-8 gap-12 pt-14 pb-20 max-w-md mx-auto md:max-w-xl lg:max-w-full">
-                <div class="block">
-                    <h4 class="text-xl text-white font-bold mb-7">Pagedone</h4>
-                    <ul class="text-lg  transition-all duration-500">
-                        <li class="mb-6"><a href="javascript:;"  class="text-gray-400 hover:text-white">Home</a></li>
-                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-400 hover:text-white">About</a></li>
-                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-400 hover:text-white">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="block">
-                    <h4 class="text-xl text-white font-bold mb-7">Products</h4>
-                    <ul class="text-lg  transition-all duration-500">
-                        <li class="mb-6"><a href="javascript:;"  class="text-gray-400 hover:text-white">Figma UI System</a></li>
-                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-400 hover:text-white">Icons Assets</a></li>
-                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-400 hover:text-white">Responsive Blocks</a></li>
-                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-400 hover:text-white">Components Library</a></li>
-                        <li ><a href="javascript:;"  class=" text-gray-400 hover:text-white">Plugin Guide</a></li>
-                    </ul>
-                </div>
-                <div class="block">
-                    <h4 class="text-xl text-white font-bold mb-7">Resources</h4>
-                    <ul class="text-lg  transition-all duration-500">
-                        <li class="mb-6"><a href="javascript:;"  class="text-gray-400 hover:text-white">FAQs</a></li>
-                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-400 hover:text-white">Quick Start</a></li>
-                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-400 hover:text-white">Documentation</a></li>
-                    </ul>
-                </div>
-                <div class="block">
-                    <h4 class="text-xl text-white font-bold mb-7">Support</h4>
-                    <ul class="text-lg  transition-all duration-500">
-                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-400 hover:text-white">Cookies</a></li>
-                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-400 hover:text-white">Terms & Conditions</a></li>
-                        <li ><a href="javascript:;"  class=" text-gray-400 hover:text-white">Privacy Policy</a></li>
-                    </ul>
-                </div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 pt-14 pb-5">
+            {/* Column 1 */}
+            <div className="block">
+              <h4 className="text-xl text-white font-bold mb-7">Pagedone</h4>
+              <ul className="text-lg transition-all duration-500">
+                <li className="mb-6"><a href="#" onClick={scrollToTop} className="text-gray-400 hover:text-white">Home</a></li>                <li className="mb-6"><a href="#" className="text-gray-400 hover:text-white">Pricing</a></li>
+              </ul>
             </div>
+
+            {/* Column 2 */}
+            <div className="block">
+              <h4 className="text-xl text-white font-bold mb-7">Support</h4>
+              <ul className="text-lg transition-all duration-500">
+              <li className="mb-6">
+                <Link to="/Privacy_Policy" className="text-gray-400 hover:text-white">Privacy Policy</Link>
+              </li>
+              <li className="mb-6">
+                <Link to="/Terms_Condition" className="text-gray-400 hover:text-white">Terms and condition</Link>
+              </li>              </ul>
+            </div>
+
+            {/* Column 3 */}
+            <div className="block">
+              <h4 className="text-xl text-white font-bold mb-7">Support</h4>
+              <ul className="text-lg transition-all duration-500">
+              <li className="mb-6">
+                <Link to="/FAQ" className="text-gray-400 hover:text-white">FAQs</Link>
+              </li>   
+              <li className="mb-6">
+                <Link to="/Contact" className="text-gray-400 hover:text-white">Contact</Link>
+              </li>              </ul>
+            </div>
+          </div>
+
+          <div className="py-7 border-t border-gray-700">
+            <div className="flex items-center justify-center flex-col lg:space-y-0 space-y-8 lg:justify-between lg:flex-row">
+              <a href="https://pagedone.io/" className="flex justify-center">
+                {/* SVG Logo */}
+              </a>
+            </div>
+          </div>
+        </div>
             <div class="py-7 border-t border-gray-700 ">
                 <div class="flex items-center justify-center flex-col lg:space-y-0 space-y-8 lg:justify-between lg:flex-row">
                     <a href="https://pagedone.io/"  class="flex justify-center ">
