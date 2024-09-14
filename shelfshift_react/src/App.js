@@ -14,6 +14,14 @@ import Pricing from './Components/Pages/Pricing';
 import DSidebar from './Components/Dashboard/DSidebar'
 import Auth from './Components/Home/Auth';
 import Dasbboard from './Components/Dashboard/Dashboard';
+import Profile from './Components/Home/Profile';
+import Question from './Components/Home/Question';
+import FAQ from './Components/Home/FAQ';
+import Contact from './Components/Home/Contact';
+import Privacy_Policy from './Components/Home/Privacy_Policy';
+import Terms_Condition from './Components/Home/Terms_Condition';
+import Pricing from './Components/Pages/Pricing';
+import PricingCard from './Components/Pages/PricingCard'
 
 // const App = () => {
 //   return (
@@ -46,14 +54,7 @@ import Dasbboard from './Components/Dashboard/Dashboard';
 //   </>
 //   );
 // }
-import Profile from './Components/Home/Profile';
-import Question from './Components/Home/Question';
-import FAQ from './Components/Home/FAQ';
-import Contact from './Components/Home/Contact';
-import Privacy_Policy from './Components/Home/Privacy_Policy';
-import Terms_Condition from './Components/Home/Terms_Condition';
-import Pricing from './Components/Pages/Pricing';
-import PricingCard from './Components/Pages/PricingCard'
+
 const App = () => {
   return (
     <>
