@@ -35,6 +35,7 @@ const App = () => {
               <Testimonial />
               <PricingCard/>
               <Footer />
+              Hello
             </>
           }
         />
