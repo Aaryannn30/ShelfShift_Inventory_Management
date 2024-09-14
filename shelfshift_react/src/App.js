@@ -9,47 +9,52 @@ import Testimonial from './Components/Home/Testimonial';
 import Footer from './Components/Home/Footer';
 import Signin from './Components/Home/Signin';
 import Signup from './Components/Home/Signup';
-
-const App = () => {
-  return (
-    <>
-    <Router>
-      <Routes>
-        {/* Home Route */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Navbar scroll='true' />
-              <Profile/>
-              <MarqueeBg />
-              <ShuffleHero />
-              <ParallaxHero />
-              <Testimonial />
-              <PricingCard/>
-              <Footer />
-            </>
-          }
-        />
-
-        {/* Signin Route */}
-        <Route path="/signin" element={<Signin />} />
-
-        {/* Signup Route */}
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-    </Router>
-  </>
-  );
-}
+import PricingCard from './Components/Pages/PricingCard'
+import Pricing from './Components/Pages/Pricing';
+import DSidebar from './Components/Dashboard/DSidebar'
+import Auth from './Components/Home/Auth';
+import Dasbboard from './Components/Dashboard/Dashboard';
 
 // const App = () => {
 //   return (
 //     <>
-//       {/* <Pricing/> */}
-//       {/* <DSidebar /> */}
-//     </>
+//     <Router>
+//       <Routes>
+//         {/* Home Route */}
+//         <Route
+//           path="/"
+//           element={
+//             <>
+//               <Navbar scroll='true' />
+//               <MarqueeBg />
+//               <ShuffleHero />
+//               <ParallaxHero />
+//               <Testimonial />
+//               <PricingCard/>
+//               <Footer />
+//             </>
+//           }
+//           />
+
+//         {/* Signin Route */}
+//         <Route path="/signin" element={<Auth />} />
+
+//         {/* Signup Route */}
+//         <Route path="/signup" element={<Auth />} />
+//       </Routes>
+//     </Router>
+//   </>
 //   );
 // }
+
+const App = () => {
+  return (
+    <>
+      {/* <Pricing/> */}
+      {/* <DSidebar /> */}
+      <Dasbboard/>
+    </>
+  );
+}
 
 export default App;
