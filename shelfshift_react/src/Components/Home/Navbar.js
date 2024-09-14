@@ -27,7 +27,7 @@ const Navbar = (props) => {
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all dark:bg-slate-900 duration-300 ${
                 isScrolled
-                    ? "bg-white shadow-lg border-b-2 border-gray-200 py-4 dark:border-slate-800 dark:shadow-white-xl"
+                    ? "bg-white shadow-lg border-b-2 border-gray-200 py-4 dark:border-slate-800 dark:shadow-white-lg"
                     : allowScroll ? "bg-transparent  py-3" : "py-4"
             }`}
         >

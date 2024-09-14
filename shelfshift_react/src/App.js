@@ -20,8 +20,44 @@ import FAQ from './Components/Home/FAQ';
 import Contact from './Components/Home/Contact';
 import Privacy_Policy from './Components/Home/Privacy_Policy';
 import Terms_Condition from './Components/Home/Terms_Condition';
-import Pricing from './Components/Pages/Pricing';
-import PricingCard from './Components/Pages/PricingCard'
+
+const App = () => {
+  return (
+    <>
+      <Router>
+        <Routes>
+          {/* Home Route */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Navbar scroll='true' />
+                <MarqueeBg />
+                <ShuffleHero />
+                <ParallaxHero />
+                <Testimonial />
+                <PricingCard />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Signin Route */}
+          <Route path="/signin" element={<Auth />} />
+
+          {/* Signup Route */}
+          <Route path="/signup" element={<Auth />} />
+          <Route path="/Question" element={<Question />} />
+          <Route path="/FAQ" element={<FAQ />} />
+          <Route path="/Privacy_Policy" element={<Privacy_Policy />} />
+          <Route path="/Terms_Condition" element={<Terms_Condition />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/Pricing" element={<Pricing />} />
+        </Routes>
+      </Router>
+    </>
+  );
+}
 
 // const App = () => {
 //   return (
@@ -34,6 +70,7 @@ import PricingCard from './Components/Pages/PricingCard'
 //           element={
 //             <>
 //               <Navbar scroll='true' />
+//               {/* <Profile/> */}
 //               <MarqueeBg />
 //               <ShuffleHero />
 //               <ParallaxHero />
@@ -42,60 +79,27 @@ import PricingCard from './Components/Pages/PricingCard'
 //               <Footer />
 //             </>
 //           }
-//           />
+//         />
 
 //         {/* Signin Route */}
-//         <Route path="/signin" element={<Auth />} />
+//         <Route path="/signin" element={<Signin />} />
 
 //         {/* Signup Route */}
-//         <Route path="/signup" element={<Auth />} />
+//         <Route path="/signup" element={<Signup />} />
+//         <Route path="/Question" element={<Question />} />
+//         <Route path="/FAQ" element={<FAQ />} />
+//         <Route path="/Privacy_Policy" element={<Privacy_Policy />} />
+//         <Route path="/Terms_Condition" element={<Terms_Condition />} />
+//         <Route path="/Contact" element={<Contact />} />
+//         <Route path="/Pricing" element={<Pricing />} />
+
+
+
 //       </Routes>
 //     </Router>
 //   </>
 //   );
 // }
-
-const App = () => {
-  return (
-    <>
-    <Router>
-      <Routes>
-        {/* Home Route */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Navbar scroll='true' />
-              <Profile/>
-              <MarqueeBg />
-              <ShuffleHero />
-              <ParallaxHero />
-              <Testimonial />
-              <PricingCard/>
-              <Footer />
-            </>
-          }
-        />
-
-        {/* Signin Route */}
-        <Route path="/signin" element={<Signin />} />
-
-        {/* Signup Route */}
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/Question" element={<Question />} />
-        <Route path="/FAQ" element={<FAQ />} />
-        <Route path="/Privacy_Policy" element={<Privacy_Policy />} />
-        <Route path="/Terms_Condition" element={<Terms_Condition />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Pricing" element={<Pricing />} />
-
-
-
-      </Routes>
-    </Router>
-  </>
-  );
-}
 
 
 // const App = () => {
