@@ -107,8 +107,7 @@ const App = () => {
     <>
       {/* <Pricing/> */}
       {/* <DSidebar /> */}
-      <Dasbboard/>
-      hello
+      <Dasbboard/>      
     </>
   );
 }
