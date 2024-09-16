@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { FaChartPie, FaUserPlus, FaNewspaper, FaTachometerAlt, FaBell, FaBars, FaTimes } from 'react-icons/fa';
-import { MdOutlineMarkUnreadChatAlt, MdDashboardCustomize } from "react-icons/md";
-import { IoFileTrayFull } from "react-icons/io5";
-import { FaUsers } from "react-icons/fa6";
+import { FaUserPlus, FaNewspaper, FaBell, FaBars, FaTimes } from 'react-icons/fa';
+import { SiPolywork } from "react-icons/si";
+import { MdInventory2 } from "react-icons/md";
+import { MdOutlinePointOfSale } from "react-icons/md";
+import { BiPurchaseTagAlt } from "react-icons/bi";
+import { BiSolidReport } from "react-icons/bi";
+
 import { LuFlower } from "react-icons/lu";
 // import SearchBar from '../SearchBar';
 import Dropdown from '../Pages/PDropdown';
 import { Link, useLocation } from 'react-router-dom';
-// import DView from './DView';
+import DView from './Dview';
 import ThemeToggle from '../Theme/ThemeToggle';
 
 const DSidebar = () => {
@@ -23,7 +26,7 @@ const DSidebar = () => {
     return (
         <>
             {/* Top Navbar */}
-            <nav className="flex items-center justify-between px-6 py-3 bg-white/30 dark:bg-gray-900/40 text-gray-900 dark:text-white backdrop-blur-lg shadow-md border-b border-gray-200 dark:border-gray-700 rounded-b-lg">
+            <nav className="flex items-center justify-between px-6 py-3 bg-white/30 dark:bg-gray-900/40 text-gray-900 dark:text-white backdrop-blur-lg shadow-md border-b border-gray-200 dark:border-gray-700 rounded-b-lg fixed z-10 w-full">
                 <div className="flex items-center text-lg">
                     <LuFlower className='text-teal-400 h-6 w-6 dark:text-teal-300' />
                     <span className="font-bold text-gray-800 dark:text-white">&nbsp;StaffSphere</span>
@@ -54,47 +57,40 @@ const DSidebar = () => {
 
                     <nav className="px-3 py-4 space-y-2">
                         <Link
-                            to="/dashboard"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/dashboard') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                            to="/home"
+                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/home') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
                         >
-                            <FaTachometerAlt className="w-4 h-4" />
-                            <span className="ml-2">Dashboard</span>
+                            <SiPolywork className="w-4 h-4" />
+                            <span className="ml-2">Home</span>
                         </Link>
                         <Link
-                            to="/workspace"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/workspace') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                            to="/inventory"
+                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/inventory') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
                         >
-                            <MdDashboardCustomize className="w-4 h-4" />
-                            <span className="ml-2">Workspace</span>
+                            <MdInventory2  className="w-4 h-4" />
+                            <span className="ml-2">Inventory</span>
                         </Link>
                         <Link
-                            to="/users"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/users') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                            to="/sales"
+                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/sales') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
                         >
-                            <FaUsers className="w-4 h-4" />
-                            <span className="ml-2">Users</span>
+                            <MdOutlinePointOfSale  className="w-4 h-4" />
+                            <span className="ml-2">Sales</span>
                         </Link>
                         <Link
-                            to="/chat"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/chat') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                            to="/purchase"
+                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/purchase') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
                         >
-                            <MdOutlineMarkUnreadChatAlt className="w-4 h-4" />
-                            <span className="ml-2">Chat</span>
+                            <BiPurchaseTagAlt className="w-4 h-4" />
+                            <span className="ml-2">Purchase</span>
                         </Link>
                         <Link
-                            to="/update_feed"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/update_feed') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                            to="/report"
+                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/report') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
                         >
-                            <IoFileTrayFull className="w-4 h-4" />
-                            <span className="ml-2">Update Feed</span>
-                        </Link>
-                        <Link
-                            to="/analysis"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/analysis') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
-                        >
-                            <FaChartPie className="w-4 h-4" />
-                            <span className="ml-2">Analysis</span>
-                        </Link>
+                            <BiSolidReport className="w-4 h-4" />
+                            <span className="ml-2">Report</span>
+                        </Link>                                                                   
                     </nav>
                 </div>
 
@@ -104,31 +100,27 @@ const DSidebar = () => {
                         <button onClick={toggleSidebar} className="focus:outline-none p-2 bg-teal-500/60 hover:bg-teal-400/40 rounded-full">
                             <FaBars className="w-4 h-4 text-gray-800 dark:text-white" />
                         </button>
-                        <Link to="/dashboard" className="p-2 bg-gray-800/20 dark:bg-gray-700/30 hover:bg-teal-400/40 rounded-full">
-                            <FaTachometerAlt className="w-4 h-4 text-gray-800 dark:text-white" />
+                        <Link to="/home" className={`p-2 dark:bg-gray-700/30 0 rounded-full ${isActive('/home') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`} >
+                            <SiPolywork  className="w-4 h-4 text-gray-800 dark:text-white" />
                         </Link>
-                        <Link to="/workspace" className="p-2 bg-gray-800/20 dark:bg-gray-700/30 hover:bg-teal-400/40 rounded-full">
-                            <MdDashboardCustomize className="w-4 h-4 text-gray-800 dark:text-white" />
+                        <Link to="/inventory" className={`p-2  dark:bg-gray-700/30  rounded-full ${isActive('/inventory') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
+                            <MdInventory2  className="w-4 h-4 text-gray-800 dark:text-white" />
                         </Link>
-                        <Link to="/users" className="p-2 bg-gray-800/20 dark:bg-gray-700/30 hover:bg-teal-400/40 rounded-full">
-                            <FaUsers className="w-4 h-4 text-gray-800 dark:text-white" />
+                        <Link to="/sales" className={`p-2  dark:bg-gray-700/30  rounded-full ${isActive('/sales') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
+                            <MdOutlinePointOfSale  className="w-4 h-4 text-gray-800 dark:text-white" />
                         </Link>
-                        <Link to="/chat" className="p-2 bg-gray-800/20 dark:bg-gray-700/30 hover:bg-teal-400/40 rounded-full">
-                            <MdOutlineMarkUnreadChatAlt className="w-4 h-4 text-gray-800 dark:text-white" />
+                        <Link to="/purchase" className={`p-2  dark:bg-gray-700/30  rounded-full ${isActive('/purchase') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
+                            <BiPurchaseTagAlt className="w-4 h-4 text-gray-800 dark:text-white" />
                         </Link>
-                        <Link to="/update_feed" className="p-2 bg-gray-800/20 dark:bg-gray-700/30 hover:bg-teal-400/40 rounded-full">
-                            <IoFileTrayFull className="w-4 h-4 text-gray-800 dark:text-white" />
-                        </Link>
-                        <Link to="/analysis" className="p-2 bg-gray-800/20 dark:bg-gray-700/30 hover:bg-teal-400/40 rounded-full">
-                            <FaChartPie className="w-4 h-4 text-gray-800 dark:text-white" />
-                        </Link>
+                        <Link to="/report" className={`p-2  dark:bg-gray-700/30 rounded-full ${isActive('/report') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
+                            <BiSolidReport className="w-4 h-4 text-gray-800 dark:text-white" />
+                        </Link>                        
                     </div>
                 )}
 
                 {/* Main Content Area */}
-                <div className={`flex-1 transition-transform duration-300 ${isOpen ? 'ml-48' : 'ml-12'} p-6 overflow-y-auto dark:bg-green-700`}>
-                    {/* <DView /> */}
-                    <div>Hello</div>
+                <div className={`flex-1 transition-transform duration-300 ${isOpen ? 'ml-48' : 'ml-12'} mt-11 p-6 overflow-y-auto backdrop-blur-md dark:bg-slate-900`}>
+                    <DView />                    
                 </div>
             </div>
         </>

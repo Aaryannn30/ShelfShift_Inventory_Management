@@ -27,6 +27,7 @@ import Item_form from './Components/Dashboard/Item_form';
 import Price_List from './Components/Dashboard/Price_List';
 import Price_Form from './Components/Dashboard/Price_Form';
 import Composite from './Components/Dashboard/Composite';
+
 const App = () => {
   return (
     <>
@@ -67,7 +68,99 @@ const App = () => {
       </Routes>
     </Router>
   </>
-  );
-}
- export default App;
+
+// const App = () => {
+//   return (
+//     <>
+//       <Router>
+//         <Routes>
+//           {/* Home Route */}
+//           <Route
+//             path="/"
+//             element={
+//               <>
+//                 <Navbar scroll='true' />
+//                 <MarqueeBg />
+//                 <ShuffleHero />
+//                 <ParallaxHero />
+
+//                 <Testimonial />
+//                 <PricingCard />
+//                 <Footer />
+//               </>
+//             }
+//           />
+
+//           {/* Signin Route */}
+//           <Route path="/signin" element={<Auth />} />
+
+//           {/* Signup Route */}
+//           <Route path="/signup" element={<Auth />} />
+//           <Route path="/Question" element={<Question />} />
+//           <Route path="/FAQ" element={<FAQ />} />
+//           <Route path="/Privacy_Policy" element={<Privacy_Policy />} />
+//           <Route path="/Terms_Condition" element={<Terms_Condition />} />
+//           <Route path="/Contact" element={<Contact />} />
+//           <Route path="/Pricing" element={<Pricing />} />
+//         </Routes>
+//       </Router>
+//     </>
+//   );
+// }
+
+// const App = () => {
+//   return (
+//     <>
+//     <Router>
+//       <Routes>
+//         {/* Home Route */}
+//         <Route
+//           path="/"
+//           element={
+//             <>
+//               <Navbar scroll='true' />
+//               {/* <Profile/> */}
+//               <MarqueeBg />
+//               <ShuffleHero />
+//               <ParallaxHero />
+//               <Testimonial />
+//               <PricingCard/>
+//               <Footer />
+//             </>
+//           }
+//         />
+
+//         {/* Signin Route */}
+//         <Route path="/signin" element={<Signin />} />
+
+//         {/* Signup Route */}
+//         <Route path="/signup" element={<Signup />} />
+//         <Route path="/Question" element={<Question />} />
+//         <Route path="/FAQ" element={<FAQ />} />
+//         <Route path="/Privacy_Policy" element={<Privacy_Policy />} />
+//         <Route path="/Terms_Condition" element={<Terms_Condition />} />
+//         <Route path="/Contact" element={<Contact />} />
+//         <Route path="/Pricing" element={<Pricing />} />
+
+
+
+//       </Routes>
+//     </Router>
+//   </>
+//   );
+// }
+
+
+// const App = () => {
+//   return (
+//     <>
+//       {/* <Pricing/> */}
+//       {/* <DSidebar /> */}
+//       <Dasbboard/>      
+//     </>
+
+//   );
+// }
+//export default App;
+
 
