@@ -20,41 +20,13 @@ import FAQ from './Components/Home/FAQ';
 import Contact from './Components/Home/Contact';
 import Privacy_Policy from './Components/Home/Privacy_Policy';
 import Terms_Condition from './Components/Home/Terms_Condition';
-import Pricing from './Components/Pages/Pricing';
-import PricingCard from './Components/Pages/PricingCard'
-
-// const App = () => {
-//   return (
-//     <>
-//     <Router>
-//       <Routes>
-//         {/* Home Route */}
-//         <Route
-//           path="/"
-//           element={
-//             <>
-//               <Navbar scroll='true' />
-//               <MarqueeBg />
-//               <ShuffleHero />
-//               <ParallaxHero />
-//               <Testimonial />
-//               <PricingCard/>
-//               <Footer />
-//             </>
-//           }
-//           />
-
-//         {/* Signin Route */}
-//         <Route path="/signin" element={<Auth />} />
-
-//         {/* Signup Route */}
-//         <Route path="/signup" element={<Auth />} />
-//       </Routes>
-//     </Router>
-//   </>
-//   );
-// }
-
+import Items from './Components/Dashboard/Item';
+import Inventory_adjustment from './Components/Dashboard/Inventory_adjustment';
+import Item_group from './Components/Dashboard/Item_group';
+import Item_form from './Components/Dashboard/Item_form';
+import Price_List from './Components/Dashboard/Price_List';
+import Price_Form from './Components/Dashboard/Price_Form';
+import Composite from './Components/Dashboard/Composite';
 const App = () => {
   return (
     <>
@@ -66,47 +38,36 @@ const App = () => {
           element={
             <>
               <Navbar scroll='true' />
-              <Profile/>
               <MarqueeBg />
               <ShuffleHero />
               <ParallaxHero />
               <Testimonial />
               <PricingCard/>
               <Footer />
-              Hello
             </>
           }
-        />
+          />
 
         {/* Signin Route */}
-        <Route path="/signin" element={<Signin />} />
+        <Route path="/signin" element={<Auth />} />
 
         {/* Signup Route */}
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/Question" element={<Question />} />
-        <Route path="/FAQ" element={<FAQ />} />
-        <Route path="/Privacy_Policy" element={<Privacy_Policy />} />
-        <Route path="/Terms_Condition" element={<Terms_Condition />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Pricing" element={<Pricing />} />
+        <Route path="/signup" element={<Auth />} />
+        <Route path="/dashboard" element={<Dasbboard />} />
+        <Route path="/items" element={<Items />} />
+        <Route path="/Inventory_adjustement" element={<Inventory_adjustment/>} />
+        <Route path="/Item_group" element={<Item_group/>} />
+        <Route path="/Item_form" element={<Item_form/>} />
+        <Route path="/Price_List" element={<Price_List/>} />
+        <Route path="/Price_Form" element={<Price_Form/>} />
+        <Route path="/Composite" element={<Composite/>} />
 
-
+        
 
       </Routes>
     </Router>
   </>
   );
 }
+ export default App;
 
-
-// const App = () => {
-//   return (
-//     <>
-//       {/* <Pricing/> */}
-//       {/* <DSidebar /> */}
-//       <Dasbboard/>
-//     </>
-//   );
-// }
-
-export default App;
