@@ -6,18 +6,25 @@ import {
     FiPlusSquare,
 } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { Dispatch, SetStateAction, useState } from "react";
-import { IconType } from "react-icons";
-import { FaRegUserCircle } from "react-icons/fa";
+import { useState } from "react";
+import { FaRegUserCircle } from "react-icons/fa"
+import Profile from "../Dashboard/Profile";
+
 
 const PDropdown = () => {
     const [open, setOpen] = useState(false);
+    const [profileSection, setProfileSection] = useState(null); // Manage which section to open
+
+    const handleProfileClick = (section) => {
+        setProfileSection(section); // Set section for profile modal
+        setOpen(false); // Close dropdown when opening modal
+    };
 
     return (
         <div className="flex items-center justify-center">
             <motion.div animate={open ? "open" : "closed"} className="relative">
                 <button
-                    onClick={() => setOpen((pv) => !pv)}
+                    onClick={() => setOpen((prev) => !prev)}
                     className="flex items-center gap-2 px-3 py-2 rounded-md text-indigo-50 bg-indigo-500 hover:bg-indigo-500 transition-colors"
                 >
                     <span className="font-medium text-sm">
@@ -34,21 +41,24 @@ const PDropdown = () => {
                     style={{ originY: "top", translateX: "-80%" }}
                     className="flex flex-col gap-2 p-2 rounded-lg bg-white shadow-xl absolute top-[120%] left-[50%] w-48 overflow-hidden"
                 >
-                    <Option setOpen={setOpen} Icon={FiEdit} text="Edit" />
-                    <Option setOpen={setOpen} Icon={FiPlusSquare} text="Duplicate" />
-                    <Option setOpen={setOpen} Icon={FiShare} text="Share" />
-                    <Option setOpen={setOpen} Icon={FiTrash} text="Remove" />
+                    <Option setOpen={handleProfileClick} Icon={FiEdit} text="Profile" section="Personal Info" />
+                    <Option setOpen={handleProfileClick} Icon={FiPlusSquare} text="Settings" section="All" />
+                    <Option setOpen={handleProfileClick} Icon={FiShare} text="Password" section="Password" />
+                    <Option setOpen={() => setOpen(false)} Icon={FiTrash} text="Logout" />
                 </motion.ul>
             </motion.div>
+
+            {/* Profile modal opens when clicking dropdown options */}
+            {profileSection && <Profile activeSection={profileSection} setActiveSection={setProfileSection} />}
         </div>
     );
 };
 
-const Option = ({ text, Icon, setOpen }) => {
+const Option = ({ text, Icon, setOpen, section }) => {
     return (
         <motion.li
             variants={itemVariants}
-            onClick={() => setOpen(false)}
+            onClick={() => setOpen(section)}
             className="flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-indigo-100 text-slate-700 hover:text-indigo-500 transition-colors cursor-pointer"
         >
             <motion.span variants={actionIconVariants}>
@@ -61,6 +71,7 @@ const Option = ({ text, Icon, setOpen }) => {
 
 export default PDropdown;
 
+// Animation variants remain the same
 const wrapperVariants = {
     open: {
         scaleY: 1,
