@@ -39,8 +39,8 @@ const Inventory_adjustment = () => {
             </div>
           </div>
 
-          {/* Table */}
-          <div className="overflow-hidden">
+          {/* Table with Scrolling Effect */}
+          <div className="overflow-auto max-h-96">
             <table className="min-w-full bg-white rounded-lg shadow-lg">
               <thead className="bg-gray-300 text-gray-700 uppercase text-sm leading-normal">
                 <tr>
