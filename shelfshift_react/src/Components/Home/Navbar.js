@@ -46,7 +46,7 @@ const Navbar = (props) => {
         >
             <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
                 <div className="flex items-center space-x-4">
-                    <div className="text-2xl font-bold text-indigo-600">Storify</div>
+                    <div className="text-2xl font-bold text-indigo-600">ShelfShift</div>
                 </div>
                 <div className="flex items-center space-x-4">
                     <Link
