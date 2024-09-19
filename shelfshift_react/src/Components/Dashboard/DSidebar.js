@@ -15,11 +15,18 @@ import ThemeToggle from '../Theme/ThemeToggle';
 
 const DSidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null); 
     const location = useLocation();
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
+   
+    const toggleDropdown = (dropdownName) => {
+        setActiveDropdown(prev => (prev === dropdownName ? null : dropdownName));  // Toggles the dropdowns and closes others
+    };
+
 
     const isActive = (path) => location.pathname === path;
 
@@ -42,7 +49,7 @@ const DSidebar = () => {
                     <Dropdown />
                 </div>
             </nav>
-
+            
             <div className="flex w-full h-full bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
                 {/* Main Sidebar */}
                 <div
@@ -56,6 +63,7 @@ const DSidebar = () => {
                     </div>
 
                     <nav className="px-3 py-4 space-y-2">
+                        {/* Home Link */}
                         <Link
                             to="/home"
                             className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/home') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
@@ -63,34 +71,128 @@ const DSidebar = () => {
                             <SiPolywork className="w-4 h-4" />
                             <span className="ml-2">Home</span>
                         </Link>
+
+                        {/* Inventory Dropdown */}
+                        <div>
+                            <button
+                                onClick={() => toggleDropdown('inventory')}
+                                className={`flex items-center w-full px-3 py-2 text-sm font-medium rounded-lg focus:outline-none ${activeDropdown === 'inventory' ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                            >
+                                <MdInventory2 className="w-4 h-4" />
+                                <span className="ml-2">Inventory</span>
+                            </button>
+                            {activeDropdown === 'inventory' && (
+                                <div className="ml-6 mt-2 space-y-2">
+                                    <Link
+                                        to="/item"
+                                        className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/item') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                                    >
+                                        Item
+                                    </Link>
+                                    <Link
+                                        to="/adjustment"
+                                        className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/adjustment') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                                    >
+                                        Adjustment
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Sales Dropdown */}
+                        <div>
+                            <button
+                                onClick={() => toggleDropdown('sales')}
+                                className={`flex items-center w-full px-3 py-2 text-sm font-medium rounded-lg focus:outline-none ${activeDropdown === 'sales' ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                            >
+                                <MdOutlinePointOfSale className="w-4 h-4" />
+                                <span className="ml-2">Sales</span>
+                            </button>
+                            {activeDropdown === 'sales' && (
+                                <div className="ml-6 mt-2 space-y-2">
+                                    <Link
+                                        to="/sales_orders"
+                                        className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/sales_orders') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                                    >
+                                        Sales Orders
+                                    </Link>
+                                    <Link
+                                        to="/packages"
+                                        className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/packages') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                                    >
+                                        Packages
+                                    </Link>
+                                    <Link
+                                        to="/invoice"
+                                        className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/invoice') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                                    >
+                                        Invoice
+                                    </Link>
+                                    <Link
+                                        to="/payments"
+                                        className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/payments') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                                    >
+                                        Payments Received
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Purchase Dropdown */}
+                        <div>
+    <button
+        onClick={() => toggleDropdown('purchase')}
+        className={`flex items-center w-full px-3 py-2 text-sm font-medium rounded-lg focus:outline-none ${activeDropdown === 'purchase' ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+    >
+        <BiPurchaseTagAlt className="w-4 h-4" />
+        <span className="ml-2">Purchase</span>
+    </button>
+    {activeDropdown === 'purchase' && (
+        <div className="ml-6 mt-2 space-y-2">
+            <Link
+                to="/purchase_orders"
+                className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/purchase_orders') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+            >
+                Purchase Orders
+            </Link>
+            <Link
+                to="/purchases"
+                className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/purchases') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+            >
+                Purchase 
+            </Link>
+            <Link
+                to="/purchase_recieved"
+                className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/purchase_recieved') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+            >
+                Purchase Received
+            </Link>
+            <Link
+                to="/expenses"
+                className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/expenses') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+            >
+                Expenses
+            </Link>
+            <Link
+                to="/bills"
+                className={`block px-3 py-2 text-sm font-medium rounded-lg ${isActive('/bills') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+            >
+                Bills
+            </Link>
+        </div>
+    )}
+</div>
+
+
+
+                        {/* Reports */}
                         <Link
-                            to="/inventory"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/inventory') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
-                        >
-                            <MdInventory2  className="w-4 h-4" />
-                            <span className="ml-2">Inventory</span>
-                        </Link>
-                        <Link
-                            to="/sales"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/sales') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
-                        >
-                            <MdOutlinePointOfSale  className="w-4 h-4" />
-                            <span className="ml-2">Sales</span>
-                        </Link>
-                        <Link
-                            to="/purchase"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/purchase') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
-                        >
-                            <BiPurchaseTagAlt className="w-4 h-4" />
-                            <span className="ml-2">Purchase</span>
-                        </Link>
-                        <Link
-                            to="/report"
-                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/report') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
+                            to="/reports"
+                            className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/reports') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
                         >
                             <BiSolidReport className="w-4 h-4" />
-                            <span className="ml-2">Report</span>
-                        </Link>                                                                   
+                            <span className="ml-2">Reports</span>
+                        </Link>
                     </nav>
                 </div>
 
@@ -103,13 +205,13 @@ const DSidebar = () => {
                         <Link to="/home" className={`p-2 dark:bg-gray-700/30 0 rounded-full ${isActive('/home') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`} >
                             <SiPolywork  className="w-4 h-4 text-gray-800 dark:text-white" />
                         </Link>
-                        <Link to="/inventory" className={`p-2  dark:bg-gray-700/30  rounded-full ${isActive('/inventory') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
+                        <Link to="/inventory_merge" className={`p-2  dark:bg-gray-700/30  rounded-full ${isActive('/inventory_merge') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
                             <MdInventory2  className="w-4 h-4 text-gray-800 dark:text-white" />
                         </Link>
-                        <Link to="/sales" className={`p-2  dark:bg-gray-700/30  rounded-full ${isActive('/sales') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
+                        <Link to="/sales_merge" className={`p-2  dark:bg-gray-700/30  rounded-full ${isActive('/sales_merge') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
                             <MdOutlinePointOfSale  className="w-4 h-4 text-gray-800 dark:text-white" />
                         </Link>
-                        <Link to="/purchase" className={`p-2  dark:bg-gray-700/30  rounded-full ${isActive('/purchase') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
+                        <Link to="/purchase_merge" className={`p-2  dark:bg-gray-700/30  rounded-full ${isActive('/purchase_merge') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
                             <BiPurchaseTagAlt className="w-4 h-4 text-gray-800 dark:text-white" />
                         </Link>
                         <Link to="/report" className={`p-2  dark:bg-gray-700/30 rounded-full ${isActive('/report') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>

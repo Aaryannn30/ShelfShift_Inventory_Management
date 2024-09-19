@@ -28,47 +28,48 @@ import Price_List from './Components/Dashboard/Price_List';
 import Price_Form from './Components/Dashboard/Price_Form';
 import Composite from './Components/Dashboard/Composite';
 
-const App = () => {
-  return (
-    <>
-    <Router>
-      <Routes>
-        {/* Home Route */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Navbar scroll='true' />
-              <MarqueeBg />
-              <ShuffleHero />
-              <ParallaxHero />
-              <Testimonial />
-              <PricingCard/>
-              <Footer />
-            </>
-          }
-          />
+// const App = () => {
+//   return (
+//     <>
+//     <Router>
+//       <Routes>
+//         {/* Home Route */}
+//         <Route
+//           path="/"
+//           element={
+//             <>
+//               <Navbar scroll='true' />
+//               <MarqueeBg />
+//               <ShuffleHero />
+//               <ParallaxHero />
+//               <Testimonial />
+//               <PricingCard/>
+//               <Footer />
+//             </>
+//           }
+//           />
 
-        {/* Signin Route */}
-        <Route path="/signin" element={<Auth />} />
+//         {/* Signin Route */}
+//         <Route path="/signin" element={<Auth />} />
 
-        {/* Signup Route */}
-        <Route path="/signup" element={<Auth />} />
-        <Route path="/dashboard" element={<Dasbboard />} />
-        <Route path="/items" element={<Items />} />
-        <Route path="/Inventory_adjustement" element={<Inventory_adjustment/>} />
-        <Route path="/Item_group" element={<Item_group/>} />
-        <Route path="/Item_form" element={<Item_form/>} />
-        <Route path="/Price_List" element={<Price_List/>} />
-        <Route path="/Price_Form" element={<Price_Form/>} />
-        <Route path="/Composite" element={<Composite/>} />
+//         {/* Signup Route */}
+//         <Route path="/signup" element={<Auth />} />
+//         <Route path="/dashboard" element={<Dasbboard />} />
+//         <Route path="/items" element={<Items />} />
+//         <Route path="/Inventory_adjustement" element={<Inventory_adjustment/>} />
+//         <Route path="/Item_group" element={<Item_group/>} />
+//         <Route path="/Item_form" element={<Item_form/>} />
+//         <Route path="/Price_List" element={<Price_List/>} />
+//         <Route path="/Price_Form" element={<Price_Form/>} />
+//         <Route path="/Composite" element={<Composite/>} />
 
         
 
-      </Routes>
-    </Router>
-  </>
-
+//       </Routes>
+//     </Router>
+//   </>
+//   )}
+//   export default App;
 // const App = () => {
 //   return (
 //     <>
@@ -151,16 +152,10 @@ const App = () => {
 // }
 
 
-// const App = () => {
-//   return (
-//     <>
-//       {/* <Pricing/> */}
-//       {/* <DSidebar /> */}
-//       <Dasbboard/>      
-//     </>
-
-//   );
-// }
-//export default App;
-
-
+const App = () => {
+  return (
+    <>
+    <Dasbboard/>
+    </>
+  )}
+  export default App;
