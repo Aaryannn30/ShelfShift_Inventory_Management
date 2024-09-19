@@ -77,6 +77,7 @@ const Option = ({ text, Icon, setOpen, handleOpen }) => {
 
 export default PDropdown;
 
+// Animation variants remain the same
 const wrapperVariants = {
   open: {
     scaleY: 1,

@@ -1,5 +1,6 @@
 import React from 'react';
 import Marquee from 'react-fast-marquee';
+import GetStartedButton from '../Theme/GetStarted';
 
 const MarqueeBg = () => {
     return (
@@ -68,8 +69,11 @@ const MarqueeBg = () => {
                     The Pros Train with <span className="text-blue-500">Plates</span>
                 </h1>
                 <p className="mt-4 text-lg text-gray-600 dark:text-neutral-500 max-w-xl mx-auto">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto optio quam voluptates accusantium unde labore maiores delectus tempora velit cum.
+                Storify Inventory Management streamlines stock tracking with real-time updates and easy analytics. Simplify operations with an intuitive, user-friendly interface.
                 </p>
+            </div>
+            <div className='absolute z-10 text-center mt-60'>
+                <GetStartedButton/>
             </div>
         </div>
     );
