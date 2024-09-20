@@ -34,7 +34,7 @@ const DView = () => {
     return (
         <div className="flex-grow bg-slate-500 dark:bg-slate-900">
             <Routes>
-                <Route path="/home" element={<DashboardMainView />} />
+                <Route path="/dashboardmainview" element={<DashboardMainView />} />
                 <Route path="/purchase_orders" element={<PurchaseOrder />} />
                 <Route path="/expenses" element={<ExpenseForm />} />
                 <Route path="/purchase_recieved" element={<PurchaseReceive />} />
