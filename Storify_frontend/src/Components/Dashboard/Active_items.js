@@ -30,7 +30,7 @@ const ActiveItems = () => {
     }
 
     const fetchItems = async () => {
-      if (user) {  // Check if user is defined here
+      if (user) {  
         try {
           const response = await axios.get(`http://127.0.0.1:8000/api/items/${user_id}`);
           setItems(response.data);

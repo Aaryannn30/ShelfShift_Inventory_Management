@@ -5,6 +5,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model
 
 
 class User(AbstractUser):
@@ -171,3 +172,7 @@ class AssociatedService(models.Model):
 
     def _str_(self):
         return self.name
+
+from django.db import models
+from django.contrib.auth.models import User
+

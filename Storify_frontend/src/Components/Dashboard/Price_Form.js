@@ -198,11 +198,11 @@ const Price_Form = () => {
           </div>
 
           <div className="flex justify-end space-x-4 mt-8">
-            <Link to='/dashbord/price_form'>
-              <button type="button" className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md">
-
-                Cancel
-              </button>
+            <Link to='/dashbord/Price_Form'>
+            <button type="button" className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md">
+              
+              Cancel
+            </button>
             </Link>
             <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">
               Save

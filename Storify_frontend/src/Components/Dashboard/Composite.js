@@ -226,8 +226,163 @@ const Composite = () => {
             </button>
           </div>
 
-          {/* Save and View Items */}
-          <div className="mt-6 flex justify-between">
+          {/* Sales Information */}
+          <div className="grid grid-cols-2 gap-6 mt-6">
+            <div>
+              <h3 className="font-medium mb-4">Sales Information</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block font-medium mb-2">Selling Price</label>
+                  <input
+                    type="text"
+                    className="w-full border border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+                <div>
+                  <label className="block font-medium mb-2">Account</label>
+                  <input
+                    type="text"
+                    className="w-full border border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <label className="block font-medium mb-2">Description</label>
+                <textarea
+                  className="w-full border border-gray-300 p-2 rounded-md"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+
+            {/* Purchase Information */}
+            <div>
+              <h3 className="font-medium mb-4">Purchase Information</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block font-medium mb-2">Cost Price</label>
+                  <input
+                    type="text"
+                    className="w-full border border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+                <div>
+                  <label className="block font-medium mb-2">Account</label>
+                  <input
+                    type="text"
+                    className="w-full border border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <label className="block font-medium mb-2">Description</label>
+                <textarea
+                  className="w-full border border-gray-300 p-2 rounded-md"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-4 mt-6">
+            <div>
+              <label className="block font-medium mb-2">Preferred Vendor</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+            <div>
+              <label className="block font-medium mb-2">Dimensions (L x W x H)</label>
+              <div className="grid grid-cols-3 gap-2">
+                <input
+                  type="text"
+                  className="border border-gray-300 p-2 rounded-md"
+                  placeholder="L"
+                />
+                <input
+                  type="text"
+                  className="border border-gray-300 p-2 rounded-md"
+                  placeholder="W"
+                />
+                <input
+                  type="text"
+                  className="border border-gray-300 p-2 rounded-md"
+                  placeholder="H"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block font-medium mb-2">Weight</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+            <div>
+              <label className="block font-medium mb-2">Brand</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+          </div>
+
+          {/* Other Fields */}
+          <div className="grid grid-cols-3 gap-4 mt-6">
+            <div>
+              <label className="block font-medium mb-2">UPC</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+            <div>
+              <label className="block font-medium mb-2">EAN</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+            <div>
+              <label className="block font-medium mb-2">ISBN</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+          </div>
+
+          {/* Additional Information */}
+          <div className="grid grid-cols-3 gap-4 mt-6">
+            <div>
+              <label className="block font-medium mb-2">Inventory Account</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+            <div>
+              <label className="block font-medium mb-2">Opening Stock</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+            <div>
+              <label className="block font-medium mb-2">Reorder Point</label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+          </div>
+
+          {/* New Additional Fields */}
+          
+          {/* Buttons */}
+          <div className="mt-6 flex justify-end">
+            
+            
             <button
               type="submit"
               className="bg-blue-600 text-white py-2 px-6 rounded-md"

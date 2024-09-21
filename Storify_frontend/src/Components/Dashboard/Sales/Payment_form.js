@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 const Payment_form = () => {
   const navigate = useNavigate();
 
   // Function to handle Cancel button click
   const handleCancel = () => {
-    navigate('/payments');  // Redirect to payments page
+    navigate('/dashboard/payments');  // Redirect to payments page
   };
 
   return (
@@ -112,6 +112,7 @@ const Payment_form = () => {
 
         {/* Action Buttons */}
         <div className="mt-6 flex justify-end space-x-4">
+          
           <button
             className="px-6 py-2 bg-gray-300 text-gray-800 rounded-md"
             onClick={handleCancel}

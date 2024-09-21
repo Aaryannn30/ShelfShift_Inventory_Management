@@ -49,7 +49,7 @@ const ActiveComposite = () => {
                 <td className="border px-4 py-2">{composite.sku}</td>
                 <td className="border px-4 py-2">{composite.unit}</td>
                 <td className="border px-4 py-2">
-                  <Link to={#} className="text-blue-600">View</Link>
+                  <Link to='/dashboard' className="text-blue-600">View</Link>
                 </td>
               </tr>
             ))}

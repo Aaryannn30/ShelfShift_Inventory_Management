@@ -5,10 +5,14 @@ import { useState } from "react";
 import { IconType } from "react-icons";
 import { FaRegUserCircle } from "react-icons/fa";
 import Profile from '../Dashboard/Profile';
+import { useContext } from 'react';
+import AuthContext from '../../context/AuthContext';
 
 const PDropdown = () => {
   const [open, setOpen] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
+  const { user, logoutUser } = useContext(AuthContext);
+
 
   const handleOpen = (field) => {
     setActiveModal(field);
@@ -47,9 +51,7 @@ const PDropdown = () => {
           className="flex flex-col gap-2 p-2 rounded-lg bg-white shadow-xl absolute top-[120%] left-[50%] w-48 overflow-hidden"
         >
           <Option setOpen={setOpen} Icon={FiEdit} text="Profile" handleOpen={handleOpen} />
-          <Option setOpen={setOpen} Icon={FiPlusSquare} text="Settings" handleOpen={handleOpen} />
-          <Option setOpen={setOpen} Icon={FiShare} text="Password" handleOpen={handleOpen} />
-          <Option setOpen={setOpen} Icon={FiTrash} text="Logout" />
+          <Option setOpen={setOpen} Icon={FiTrash} text="Logout" onClick={logoutUser} />
         </motion.ul>
       </motion.div>
       {activeModal && <Profile activeModal={activeModal} handleBack={handleBack} handleClose={handleClose} isOpen={isOpen} />}
@@ -57,13 +59,17 @@ const PDropdown = () => {
   );
 };
 
-const Option = ({ text, Icon, setOpen, handleOpen }) => {
+const Option = ({ text, Icon, setOpen, handleOpen, onClick }) => {
   return (
     <motion.li
       variants={itemVariants}
       onClick={() => {
         setOpen(false);
-        handleOpen(text);
+        if (onClick) {
+          onClick(); // This will handle logout if provided
+        } else {
+          handleOpen(text); // For other options like Profile
+        }
       }}
       className="flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-indigo-100 text-slate-700 hover:text-indigo-500 transition-colors cursor-pointer"
     >
@@ -77,7 +83,6 @@ const Option = ({ text, Icon, setOpen, handleOpen }) => {
 
 export default PDropdown;
 
-// Animation variants remain the same
 const wrapperVariants = {
   open: {
     scaleY: 1,

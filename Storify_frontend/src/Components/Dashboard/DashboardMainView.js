@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import './css/style.css';
-
+// import './ch'
 import './charts/ChartjsConfig';
 
 // Import pages

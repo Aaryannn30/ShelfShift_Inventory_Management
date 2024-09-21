@@ -1,90 +1,91 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect , useContext } from "react";
+import { useState, useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom"; 
 
-
-const Profile = () => {
+const Profile = ({ isOpen, handleClose }) => {
     const [activeSection, setActiveSection] = useState("All");
-    const [isOpen, setIsOpen] = useState(true);
     const { user, logoutUser } = useContext(AuthContext);
-
-    useEffect(() => {
-        setIsOpen(true); // Automatically open the modal when activeSection changes
-    }, [activeSection]);
+    const navigate = useNavigate(); 
 
     const handleBack = () => {
-        setActiveSection("All"); // Return to main options when clicking back
+        setActiveSection("All");
     };
 
-    const handleClose = () => {
-        setIsOpen(false); // Close modal when "Close" is clicked
-        setActiveSection(null);
-         // Reset the active section
+    const handleLogout = () => {
+        logoutUser();
+        navigate('/login');
     };
 
     return (
-        <div className="px-4 py-64 grid place-content-center">
+        <div className="relative">
             <SpringModal
                 isOpen={isOpen}
                 activeModal={activeSection}
                 setActiveSection={setActiveSection}
                 handleBack={handleBack}
                 handleClose={handleClose}
-                logout={logoutUser}
+                logout={handleLogout}
             />
         </div>
     );
 };
 
-const SpringModal = ({ isOpen, activeModal, setActiveSection, handleBack, handleClose , logout }) => {
+const SpringModal = ({ isOpen, activeModal, setActiveSection, handleBack, handleClose, logout }) => {
+    const { user } = useContext(AuthContext);
+
     return (
         <AnimatePresence>
             {isOpen && (
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={handleClose} // Close modal on outside click
-                    className="fixed inset-0 z-50 flex items-center justify-center"
+                    initial={{ opacity: 0, x: 100 }} // Start off-screen to the right
+                    animate={{ opacity: 1, x: 0 }}   // Animate into view from the right
+                    exit={{ opacity: 0, x: 100 }}     // Animate out of view to the right
+                    className="fixed inset-y-0 right-0 z-50 flex items-start justify-end p-4 w-full max-w-sm" 
                 >
                     <motion.div
-                        initial={{ scale: 0, rotate: "12.5deg" }}
-                        animate={{ scale: 1, rotate: "0deg" }}
-                        exit={{ scale: 0, rotate: "0deg" }}
                         onClick={(e) => e.stopPropagation()} // Prevent close when clicking inside modal
-                        className="bg-white text-indigo-600 p-6 rounded-lg w-full max-w-md shadow-xl cursor-default relative overflow-hidden"
+                        className="bg-white text-indigo-600 p-6 rounded-lg shadow-xl cursor-default relative overflow-hidden w-full"
                     >
                         <div className="relative z-10">
                             {activeModal === "All" ? (
                                 <>
-                                    <h3 className="text-2xl font-bold text-center mb-4">Profile</h3>
+                                    <h3 className="text-2xl font-bold text-center mb-4">Options</h3>
                                     <div className="grid gap-4">
+                                        {/* Profile Option */}
                                         <button
-                                            onClick={() => setActiveSection("Personal Info")}
+                                            onClick={() => setActiveSection("Profile")}
                                             className="bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded"
                                         >
-                                            Personal Info
+                                            Profile
                                         </button>
+
+                                        {/* Logout Option */}
                                         <button
-                                            onClick={() => setActiveSection("Notifications")}
-                                            className="bg-green-200 hover:bg-green-300 text-green-800 py-2 px-4 rounded"
+                                            onClick={logout}
+                                            className="bg-red-200 hover:bg-red-300 text-red-800 py-2 px-4 rounded"
                                         >
-                                            Notifications
-                                        </button>
-                                        <button
-                                            onClick={() => setActiveSection("Password")}
-                                            className="bg-purple-200 hover:bg-purple-300 text-purple-800 py-2 px-4 rounded"
-                                        >
-                                            Password
-                                        </button>
-                                        <button
-                                            onClick={() => setActiveSection("Theme")}
-                                            className="bg-yellow-200 hover:bg-yellow-300 text-yellow-800 py-2 px-4 rounded"
-                                        >
-                                            Theme
+                                            Logout
                                         </button>
                                     </div>
-                                    <div className="mt-4">
+                                </>
+                            ) : (
+                                <>
+                                    {/* Profile Section */}
+                                    <h3 className="text-2xl font-bold text-center mb-4">Profile</h3>
+                                    <p className="text-center text-sm mb-2">Username: {user.username}</p>
+                                    <p className="text-center text-sm mb-6">Email: {user.email}</p>
+
+                                    <div className="grid gap-4">
+                                        {/* Back Option */}
+                                        <button
+                                            onClick={handleBack}
+                                            className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded w-full"
+                                        >
+                                            Back
+                                        </button>
+
+                                        {/* Close Option */}
                                         <button
                                             onClick={handleClose}
                                             className="bg-red-200 hover:bg-red-300 text-red-800 py-2 px-4 rounded w-full"
@@ -92,28 +93,6 @@ const SpringModal = ({ isOpen, activeModal, setActiveSection, handleBack, handle
                                             Close
                                         </button>
                                     </div>
-                                    <div className="mt-4">
-                                        <button
-                                            onClick={logout}
-                                            className="bg-red-200 hover:bg-red-300 text-red-800 py-2 px-4 rounded w-full"
-                                        >
-                                            Logout
-                                        </button>
-                                        
-                                    </div>
-                                </>
-                            ) : (
-                                <>
-                                    <h3 className="text-2xl font-bold text-center mb-4">{activeModal}</h3>
-                                    <p className="text-center mb-6">
-                                        {activeModal} content goes here.
-                                    </p>
-                                    <button
-                                        onClick={handleBack}
-                                        className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded w-full mb-4"
-                                    >
-                                        Back
-                                    </button>
                                 </>
                             )}
                         </div>

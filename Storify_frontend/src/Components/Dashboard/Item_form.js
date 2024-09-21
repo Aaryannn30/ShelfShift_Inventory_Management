@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios"; // Make sure axios is imported
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
@@ -35,6 +35,7 @@ const ItemForm = () => {
   const [inventoryAccount, setInventoryAccount] = useState("");
   const [openingStock, setOpeningStock] = useState("");
   const [reorderPoint, setReorderPoint] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -103,10 +104,22 @@ const ItemForm = () => {
     });
 
     console.log("Item created successfully:", response.data);
+    setSuccessMessage('item added succesfully')
+
     // Clear form after successful submission
     setName("");
     setSku("");
-    // Reset other states as needed
+    setBrand("")
+    setCost("")
+    sellingPrice("")
+    setDimensionUnit("")
+    setHeight("")
+    setHeight("")
+    setImage("")
+    setInventoryAccount("")
+    setIsReturnable("")
+    setIsbn("");
+  // Reset other states as needed
   } catch (error) {
     console.error("Error creating item:", error.response?.data || error.message);
   }
@@ -478,6 +491,14 @@ const ItemForm = () => {
             >
               Save
             </button>
+            <Link to='/dashboard/active_items'>
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+            >
+              View Items
+            </button>
+            </Link>
           </div>
         </form>
       </div>

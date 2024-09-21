@@ -236,16 +236,41 @@ const Item_group = () => {
             </button>
           </div>
 
+          {/* Item Type Selection */}
+          <div className="flex space-x-4 mt-4">
+            <label className="text-sm font-medium">Select your Item Type:</label>
+            <div>
+              <label className="mr-4">
+                <input
+                  type="radio"
+                  name="itemType"
+                  value="Inventory"
+                  className="mr-1"
+                />
+                Inventory
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="itemType"
+                  value="Non-Inventory"
+                  className="mr-1"
+                />
+                Non-Inventory
+              </label>
+            </div>
+          </div>
+
+         
           {/* Save and Cancel Buttons */}
           <div className="flex justify-end space-x-4 mt-8">
             <Link to='/dashboard/item'>
-              <button
-                type="button"
-                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md"
-              >
-                Cancel
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md"
+            >
+              Cancel
+            </button></Link>
             <button
               type="submit"
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
