@@ -4,8 +4,8 @@ import i1 from './i1.png';
 import i2 from './i2.png';
 import i3 from './i3.jpeg';
 import i4 from './i4.png';
-import Item_group from './Item_group';
-import Item_form from './Item_form';
+// import Item_group from './Item_group';
+// import Item_form from './Item_form';
 
 const Items = () => {
   const [selectedItemType, setSelectedItemType] = useState('');
@@ -18,13 +18,13 @@ const Items = () => {
     // Redirect to the appropriate page based on the selection
     switch (selectedValue) {
       case 'active':
-        navigate('/active_items');
+        navigate('/dashboard/active_items');
         break;
       case 'returnable':
-        navigate('/returnable_items');
+        navigate('/dashboard/returnable_items');
         break;
       case 'non-returnable':
-        navigate('/nonreturnable_items');
+        navigate('/dashboard/nonreturnable_items');
         break;
       default:
         break;
