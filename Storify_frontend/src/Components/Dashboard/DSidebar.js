@@ -69,9 +69,7 @@ const DSidebar = () => {
                 <div className="flex items-center gap-x-6">
                     {/* <SearchBar /> */}
                     <ThemeToggle />
-                    <FaBell className="w-4 h-4 text-gray-600 dark:text-gray-300 hover:text-teal-400 transition-colors cursor-pointer" />
-                    <FaNewspaper className="w-4 h-4 text-gray-600 dark:text-gray-300 hover:text-teal-400 transition-colors cursor-pointer" />
-                    <FaUserPlus className="w-4 h-4 text-gray-600 dark:text-gray-300 hover:text-teal-400 transition-colors cursor-pointer" />
+                    
                     <Dropdown />
                 </div>
             </nav>
@@ -210,13 +208,13 @@ const DSidebar = () => {
                         </div>
 
                         {/* Reports */}
-                        <Link
+                        {/* <Link
                             to="/reports"
                             className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${isActive('/reports') ? 'bg-teal-500/80' : 'hover:bg-teal-400/40'}`}
                         >
                             <BiSolidReport className="w-4 h-4" />
                             <span className="ml-2">Reports</span>
-                        </Link>
+                        </Link> */}
                     </nav>
                 </div>
 
@@ -238,9 +236,9 @@ const DSidebar = () => {
                         <Link to="/dashboard/purchase_merge" className={`p-2 dark:bg-gray-700/30 rounded-full ${isActive('/purchase_merge') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
                             <BiPurchaseTagAlt className="w-4 h-4 text-gray-800 dark:text-white" />
                         </Link>
-                        <Link to="/report" className={`p-2 dark:bg-gray-700/30 rounded-full ${isActive('/report') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
+                        {/* <Link to="/report" className={`p-2 dark:bg-gray-700/30 rounded-full ${isActive('/report') ? 'bg-teal-500/60' : 'hover:bg-teal-400/40'}`}>
                             <BiSolidReport className="w-4 h-4 text-gray-800 dark:text-white" />
-                        </Link>                        
+                        </Link>                         */}
                     </div>
                 )}
 

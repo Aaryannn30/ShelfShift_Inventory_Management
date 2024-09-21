@@ -11,7 +11,7 @@ const Package_form = () => {
   const navigate = useNavigate();
 
   const handleCancel = () => {
-    navigate('/packages');
+    navigate('/dashboard/packages');
   };
 
   const handleAddItem = () => {

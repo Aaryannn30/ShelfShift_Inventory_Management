@@ -79,7 +79,7 @@ const App = () => {
               <MarqueeBg />
               <ShuffleHero />
               <ParallaxHero />
-              <Testimonial />
+              {/* <Testimonial /> */}
               {/* <PricingCard /> */}
               <Footer />
             </>
@@ -94,7 +94,6 @@ const App = () => {
           <Route path="/terms_condition" element={<Terms_Condition />} />
           <Route path="/contact" element={<Contact />} />
 
-          {/* Protected Routes */}
           <Route
             path="/dashboard"
             element={

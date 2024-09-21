@@ -4,6 +4,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from .models import Item
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -53,3 +54,23 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+#=========================================================================================================================
+
+class ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        fields = ['id', 'name', 'sku', 'unit', 'length', 'width', 'height', 'dimension_unit', 'weight', 'weight_unit',
+                   'manufacturer', 'brand', 'upc', 'mpn', 'isbn', 'selling_price', 'sales_description', 'sales_account', 
+                   'cost', 'purchase_description', 'purchase_account', 'inventory_account', 'opening_stock', 'reorder_point', 'image', 'is_returnable']
+
+    # Custom validation or logic can go here, if needed
+
+# ---------------------------------------------------------------------------------------
+from rest_framework import serializers
+from .models import PriceList
+
+class PriceListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PriceList
+        fields = '__all__'

@@ -17,12 +17,13 @@ import DashboardCard10 from '../partials/dashboard/DashboardCard10';
 import DashboardCard11 from '../partials/dashboard/DashboardCard11';
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
-
+import { useContext } from "react";
+import AuthContext from '../../../context/AuthContext';
 
 function DashboardHome() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const { user } = useContext(AuthContext); 
 
   return (
     <div className="flex overflow-hidden backdrop-blur-md bg-fixed">
@@ -38,11 +39,11 @@ function DashboardHome() {
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
 
               <div className="mb-4 sm:mb-0">
-                <h1 className="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold"> Dashboard</h1>
+                <h1 className="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold"> {user.username}'s Dashboard</h1>
               </div>
 
               
-              <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
+              {/* <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
                
                 <FilterButton align="right" />
                 
@@ -54,7 +55,7 @@ function DashboardHome() {
                   </svg>
                   <span className="max-xs:sr-only">Add View</span>
                 </button>                
-              </div>
+              </div>*/}
 
             </div>
             <div className="grid grid-cols-12 gap-6">
@@ -65,13 +66,13 @@ function DashboardHome() {
               <DashboardCard05 />
               <DashboardCard06 />
 
-              
+{/*               
               <DashboardCard10 />
               <DashboardCard08 />
               
               <DashboardCard09 />
               <DashboardCard12 />
-              <DashboardCard13 />
+              <DashboardCard13 /> */}
               
             </div>
 

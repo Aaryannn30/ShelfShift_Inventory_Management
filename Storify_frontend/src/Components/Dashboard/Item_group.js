@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Item_group = () => {
   const [attributes, setAttributes] = useState([{ attribute: "", option: "" }]);
@@ -65,7 +66,7 @@ const Item_group = () => {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               >
                 <option>Select or add manufacturer</option>
-                {/* Add more options here */}
+                
               </select>
             </div>
 
@@ -77,7 +78,7 @@ const Item_group = () => {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               >
                 <option>Select or add brand</option>
-                {/* Add more options here */}
+              
               </select>
             </div>
           </div>
@@ -161,40 +162,16 @@ const Item_group = () => {
             </div>
           </div>
 
-          {/* Table: SKU and Pricing */}
-          <div className="overflow-x-auto mt-6">
-            <table className="min-w-full bg-white rounded-lg shadow-lg">
-              <thead className="bg-gray-200 text-gray-600 uppercase text-sm">
-                <tr>
-                  <th className="py-3 px-6">Item Name</th>
-                  <th className="py-3 px-6">SKU</th>
-                  <th className="py-3 px-6">Cost Price</th>
-                  <th className="py-3 px-6">Selling Price</th>
-                  <th className="py-3 px-6">UPC</th>
-                  <th className="py-3 px-6">EAN</th>
-                  <th className="py-3 px-6">ISEN</th>
-                  <th className="py-3 px-6">Reorder Point</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-gray-200">
-                  <td className="py-3 px-6">No item data</td>
-                  <td colSpan="7" className="text-center">
-                    Please enter attributes.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
+         
           {/* Save and Cancel Buttons */}
           <div className="flex justify-end space-x-4 mt-8">
+            <Link to='/dashboard/item'>
             <button
               type="button"
               className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md"
             >
               Cancel
-            </button>
+            </button></Link>
             <button
               type="submit"
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"

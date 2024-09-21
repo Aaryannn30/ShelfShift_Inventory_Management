@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Composite = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [returnableItem, setReturnableItem] = useState(false);
@@ -348,18 +348,21 @@ const Composite = () => {
           
           {/* Buttons */}
           <div className="mt-6 flex justify-end">
+            
+            
             <button
               type="button"
               className="bg-blue-600 text-white py-2 px-6 rounded-md mr-4"
             >
               Save
             </button>
+            <Link to='/dashboard/items'>
             <button
               type="button"
               className="bg-gray-300 text-gray-700 py-2 px-6 rounded-md"
             >
               Cancel
-            </button>
+            </button></Link>
           </div>
         </form>
       </div>

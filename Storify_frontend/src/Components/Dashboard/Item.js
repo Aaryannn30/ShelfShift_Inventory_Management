@@ -18,13 +18,13 @@ const Items = () => {
     // Redirect to the appropriate page based on the selection
     switch (selectedValue) {
       case 'active':
-        navigate('/active_items');
+        navigate('/dashboard/active_items');
         break;
       case 'returnable':
-        navigate('/returnable_items');
+        navigate('/dashboard/returnable_items');
         break;
       case 'non-returnable':
-        navigate('/nonreturnable_items');
+        navigate('/dashboard/nonreturnable_items');
         break;
       default:
         break;

@@ -7,7 +7,7 @@ const Inventory_adjustment = () => {
       <nav className="bg-gray-800 p-4 text-white">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-xl font-bold">Inventory Management</h1>
-          {/* Add New Button */}
+         
           <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
             + New
           </button>
