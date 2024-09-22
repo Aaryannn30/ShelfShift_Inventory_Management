@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {jwtDecode} from "jwt-decode";
 import { Link } from "react-router-dom";
 
 const ActiveComposite = () => {
@@ -15,12 +14,13 @@ const ActiveComposite = () => {
       }
 
       try {
-        await axios.post('http://localhost:8000/api/composites/', compositeData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
-        setComposites(response.data);
+        const response = await axios.get('http://localhost:8000/api/composites/', {
+          headers: {
+            "Authorization": `Bearer ${token}`, // Include token if needed for auth
+            "Content-Type": "application/json",
+          },
+        });
+        setComposites(response.data); // Assign the fetched data to the state
       } catch (error) {
         console.error("Error fetching composites:", error);
       }

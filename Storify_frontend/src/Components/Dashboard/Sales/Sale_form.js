@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaUserPlus } from 'react-icons/fa';
 import NewCustomerModal from '../NewCustomerModal';
 
-const Sale_form = () => {
+const SaleForm = () => {
   const [customers, setCustomers] = useState([
     { id: 1, name: 'John Doe', email: 'john@example.com' },
     { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
@@ -68,20 +68,20 @@ const Sale_form = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-indigo-100 p-6">
       {/* New Customer Modal */}
       {isModalOpen && <NewCustomerModal onClose={() => setIsModalOpen(false)} onSave={handleAddNewCustomer} />}
 
-      <div className="bg-white p-8 shadow rounded-lg">
-        <h1 className="text-2xl font-semibold mb-6">New Sales Order</h1>
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Create New Sales Order</h1>
         <form>
           {/* Customer and Sales Order Info */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div>
               <label className="block text-gray-700 mb-2">Customer Name</label>
               <div className="relative">
                 <select
-                  className="w-full px-4 py-4 border border-gray-300 rounded-lg"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500"
                   onChange={(e) => {
                     const selected = customers.find((c) => c.id === parseInt(e.target.value));
                     setSelectedCustomer(selected);
@@ -99,27 +99,27 @@ const Sale_form = () => {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(true)}
-                  className="absolute top-2 right-6 text-blue-600"
+                  className="absolute top-2 right-2 text-blue-600 hover:text-blue-800 transition"
                 >
                   <FaUserPlus size={20} />
                 </button>
               </div>
             </div>
             <div>
-              <label className="block text-gray-700 mb-2">Sales Order#</label>
+              <label className="block text-gray-700 mb-2">Sales Order #</label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter sales order number"
                 value={salesOrderNumber}
                 onChange={(e) => setSalesOrderNumber(e.target.value)}
               />
             </div>
             <div>
-              <label className="block text-gray-700 mb-2">Reference#</label>
+              <label className="block text-gray-700 mb-2">Reference #</label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter reference number"
                 value={referenceNumber}
                 onChange={(e) => setReferenceNumber(e.target.value)}
@@ -129,7 +129,7 @@ const Sale_form = () => {
               <label className="block text-gray-700 mb-2">Sales Order Date</label>
               <input
                 type="date"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={salesOrderDate}
                 onChange={(e) => setSalesOrderDate(e.target.value)}
               />
@@ -138,7 +138,7 @@ const Sale_form = () => {
               <label className="block text-gray-700 mb-2">Expected Shipment Date</label>
               <input
                 type="date"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={expectedShipmentDate}
                 onChange={(e) => setExpectedShipmentDate(e.target.value)}
               />
@@ -146,7 +146,7 @@ const Sale_form = () => {
             <div>
               <label className="block text-gray-700 mb-2">Payment Terms</label>
               <select
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={paymentTerms}
                 onChange={(e) => setPaymentTerms(e.target.value)}
               >
@@ -159,7 +159,7 @@ const Sale_form = () => {
               <label className="block text-gray-700 mb-2">Delivery Method</label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter delivery method"
                 value={deliveryMethod}
                 onChange={(e) => setDeliveryMethod(e.target.value)}
@@ -169,7 +169,7 @@ const Sale_form = () => {
               <label className="block text-gray-700 mb-2">Salesperson</label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter salesperson"
                 value={salesperson}
                 onChange={(e) => setSalesperson(e.target.value)}
@@ -179,10 +179,10 @@ const Sale_form = () => {
 
           {/* Item Table */}
           <div className="mb-6">
-            <h2 className="text-lg font-semibold mb-4">Item Table</h2>
+            <h2 className="text-xl font-semibold mb-4">Item Table</h2>
             <table className="min-w-full border border-gray-200">
               <thead>
-                <tr className="bg-gray-100">
+                <tr className="bg-gray-200">
                   <th className="border px-4 py-2">Item Description</th>
                   <th className="border px-4 py-2">Quantity</th>
                   <th className="border px-4 py-2">Rate</th>
@@ -192,13 +192,13 @@ const Sale_form = () => {
               </thead>
               <tbody>
                 {items.map((item, index) => (
-                  <tr key={index}>
+                  <tr key={index} className="hover:bg-gray-50">
                     <td className="border px-4 py-2">
                       <input
                         type="text"
                         value={item.description}
                         onChange={(e) => handleItemChange(index, 'description', e.target.value)}
-                        className="w-full px-2 py-1 border rounded"
+                        className="w-full px-2 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter item description"
                       />
                     </td>
@@ -207,7 +207,7 @@ const Sale_form = () => {
                         type="number"
                         value={item.quantity}
                         onChange={(e) => handleItemChange(index, 'quantity', parseInt(e.target.value))}
-                        className="w-full px-2 py-1 border rounded"
+                        className="w-full px-2 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </td>
                     <td className="border px-4 py-2">
@@ -215,7 +215,7 @@ const Sale_form = () => {
                         type="number"
                         value={item.rate}
                         onChange={(e) => handleItemChange(index, 'rate', parseFloat(e.target.value))}
-                        className="w-full px-2 py-1 border rounded"
+                        className="w-full px-2 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </td>
                     <td className="border px-4 py-2">
@@ -223,7 +223,7 @@ const Sale_form = () => {
                         type="number"
                         value={item.discount}
                         onChange={(e) => handleItemChange(index, 'discount', parseFloat(e.target.value))}
-                        className="w-full px-2 py-1 border rounded"
+                        className="w-full px-2 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </td>
                     <td className="border px-4 py-2">
@@ -236,15 +236,15 @@ const Sale_form = () => {
             <button
               type="button"
               onClick={addNewRow}
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+              className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
             >
               Add New Item
             </button>
           </div>
 
           {/* Subtotal */}
-          <div className="flex justify-between mb-6">
-            <span className="font-semibold">Subtotal:</span>
+          <div className="flex justify-between mb-6 font-semibold">
+            <span>Subtotal:</span>
             <span>{subtotal.toFixed(2)}</span>
           </div>
 
@@ -253,7 +253,7 @@ const Sale_form = () => {
             <label className="block text-gray-700 mb-2">Upload File</label>
             <input
               type="file"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500"
               onChange={handleFileUpload}
             />
           </div>
@@ -263,13 +263,13 @@ const Sale_form = () => {
             <button
               type="button"
               onClick={handleCancel}
-              className="bg-gray-500 text-white px-4 py-2 rounded"
+              className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
             >
               Save
             </button>
@@ -280,4 +280,4 @@ const Sale_form = () => {
   );
 };
 
-export default Sale_form;
+export default SaleForm;

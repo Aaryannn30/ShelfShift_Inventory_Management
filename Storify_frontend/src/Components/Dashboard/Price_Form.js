@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { jwtDecode } from 'jwt-decode';
 
 const Price_Form = () => {
-  const { user, logoutUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [transactionType, setTransactionType] = useState("Sales");
   const [priceListType, setPriceListType] = useState("All Items");
   const [description, setDescription] = useState("");
   const [percentageType, setPercentageType] = useState("Markup");
   const [roundOff, setRoundOff] = useState("Never mind");
-
+  
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -50,42 +48,23 @@ const Price_Form = () => {
         },
       });
 
-      console.log("Item created successfully:", response.data);
-      // Clear form after successful submission
+      console.log("Price list created successfully:", response.data);
       setName("");
-      setTransactionType("");
-      setPriceListType("");
+      setTransactionType("Sales");
+      setPriceListType("All Items");
       setDescription("");
-      setPercentageType("");
-      setRoundOff("");
-      // Reset other states as needed
+      setPercentageType("Markup");
+      setRoundOff("Never mind");
+      navigate('/dashboard/Price_List');
     } catch (error) {
-      console.error("Error creating item:", error.response?.data || error.message);
+      console.error("Error creating price list:", error.response?.data || error.message);
     }
   };
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   try {
-  //     await axios.post("http://127.0.0.1:8000/api/price-lists/", {
-  //       name,
-  //       transactionType,
-  //       priceListType,
-  //       description,
-  //       percentageType,
-  //       roundOff,
-  //     });
-  //     navigate("/dashboard/PriceListsPage"); // Navigate to price lists page after saving
-  //   } catch (error) {
-  //     console.error("Error saving price list:", error);
-  //   }
-  // };
-
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-6xl mx-auto">
-        <h2 className="text-xl font-bold mb-6">New Price List</h2>
+    <div className="bg-gradient-to-r from-green-200 to-blue-300 min-h-screen p-8">
+      <div className="bg-white shadow-xl rounded-lg p-10 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Create New Price List</h2>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
@@ -94,64 +73,64 @@ const Price_Form = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 sm:text-sm p-2"
               placeholder="Enter name"
               required
             />
           </div>
 
-          <div className="flex space-x-4">
+          <div>
             <label className="block text-sm font-medium text-gray-700">Transaction Type:</label>
-            <div className="flex items-center space-x-4">
-              <label>
+            <div className="flex items-center space-x-4 mt-1">
+              <label className="flex items-center">
                 <input
                   type="radio"
                   name="transactionType"
                   value="Sales"
                   checked={transactionType === "Sales"}
                   onChange={() => setTransactionType("Sales")}
-                  className="mr-1"
+                  className="mr-2"
                 />
-                Sales
+                <span>Sales</span>
               </label>
-              <label>
+              <label className="flex items-center">
                 <input
                   type="radio"
                   name="transactionType"
                   value="Purchase"
                   checked={transactionType === "Purchase"}
                   onChange={() => setTransactionType("Purchase")}
-                  className="mr-1"
+                  className="mr-2"
                 />
-                Purchase
+                <span>Purchase</span>
               </label>
             </div>
           </div>
 
-          <div className="flex space-x-4">
+          <div>
             <label className="block text-sm font-medium text-gray-700">Price List Type:</label>
-            <div className="flex items-center space-x-4">
-              <label>
+            <div className="flex items-center space-x-4 mt-1">
+              <label className="flex items-center">
                 <input
                   type="radio"
                   name="priceListType"
                   value="All Items"
                   checked={priceListType === "All Items"}
                   onChange={() => setPriceListType("All Items")}
-                  className="mr-1"
+                  className="mr-2"
                 />
-                All Items
+                <span>All Items</span>
               </label>
-              <label>
+              <label className="flex items-center">
                 <input
                   type="radio"
                   name="priceListType"
                   value="Individual Items"
                   checked={priceListType === "Individual Items"}
                   onChange={() => setPriceListType("Individual Items")}
-                  className="mr-1"
+                  className="mr-2"
                 />
-                Individual Items
+                <span>Individual Items</span>
               </label>
             </div>
           </div>
@@ -161,50 +140,45 @@ const Price_Form = () => {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 sm:text-sm p-2"
               placeholder="Enter the description"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700">Percentage*</label>
-              <div className="mt-1">
-                <select
-                  value={percentageType}
-                  onChange={(e) => setPercentageType(e.target.value)}
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                >
-                  <option value="Markup">Markup</option>
-                  <option value="Markdown">Markdown</option>
-                </select>
-              </div>
+              <select
+                value={percentageType}
+                onChange={(e) => setPercentageType(e.target.value)}
+                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 sm:text-sm p-2"
+              >
+                <option value="Markup">Markup</option>
+                <option value="Markdown">Markdown</option>
+              </select>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700">Round Off To</label>
-              <div className="mt-1">
-                <select
-                  value={roundOff}
-                  onChange={(e) => setRoundOff(e.target.value)}
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                >
-                  <option value="Never mind">Never mind</option>
-                  <option value="Nearest Whole">Nearest Whole</option>
-                  <option value="Nearest Decimal">Nearest Decimal</option>
-                </select>
-              </div>
+              <select
+                value={roundOff}
+                onChange={(e) => setRoundOff(e.target.value)}
+                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 sm:text-sm p-2"
+              >
+                <option value="Never mind">Never mind</option>
+                <option value="Nearest Whole">Nearest Whole</option>
+                <option value="Nearest Decimal">Nearest Decimal</option>
+              </select>
             </div>
           </div>
 
           <div className="flex justify-end space-x-4 mt-8">
-            <Link to='/dashbord/Price_Form'>
-            <button type="button" className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md">
-              
-              Cancel
-            </button>
+            <Link to='/dashboard/Price_List'>
+              <button type="button" className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg transition duration-200">
+                Cancel
+              </button>
             </Link>
-            <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">
+            <button type="submit" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200">
               Save
             </button>
           </div>
