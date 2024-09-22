@@ -59,7 +59,7 @@ const ItemForm = () => {
     return;
   }
 
-  // Validate required fields
+ 
   if (!name || !sku || !sellingPrice) {
     console.error("Please fill in all required fields.");
     return;
@@ -106,7 +106,6 @@ const ItemForm = () => {
     console.log("Item created successfully:", response.data);
     setSuccessMessage('item added succesfully')
 
-    // Clear form after successful submission
     setName("");
     setSku("");
     setBrand("")
@@ -119,7 +118,6 @@ const ItemForm = () => {
     setInventoryAccount("")
     setIsReturnable("")
     setIsbn("");
-  // Reset other states as needed
   } catch (error) {
     console.error("Error creating item:", error.response?.data || error.message);
   }
@@ -128,10 +126,15 @@ const ItemForm = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
-      {/* Main Container */}
+     
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-6xl mx-auto">
-        {/* Header */}
+        
         <h2 className="text-2xl font-bold mb-6">New Item</h2>
+        {successMessage && (
+          <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6">
+            <p>{successMessage}</p>
+          </div>
+        )}
 
         {/* Form */}
         <form className="space-y-6" onSubmit={handleSubmit}>
@@ -192,7 +195,6 @@ const ItemForm = () => {
             </div>
           </div>
 
-          {/* Name, SKU, Unit, Returnable */}
           <div className="grid grid-cols-3 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700">Name</label>
@@ -202,7 +204,7 @@ const ItemForm = () => {
                 placeholder="Enter Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-              />
+              required/>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">SKU</label>
@@ -212,7 +214,7 @@ const ItemForm = () => {
                 placeholder="Enter SKU"
                 value={sku}
                 onChange={(e) => setSku(e.target.value)}
-              />
+             required />
             </div>
 
             <div>
@@ -479,12 +481,14 @@ const ItemForm = () => {
           </div>
           {/* Save and Cancel Buttons */}
           <div className="flex justify-end space-x-4 mt-8">
+            <Link to='/dashboard/item'>
             <button
               type="button"
               className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md"
             >
               Cancel
             </button>
+            </Link>
             <button
               type="submit"
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"

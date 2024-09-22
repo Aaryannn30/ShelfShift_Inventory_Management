@@ -1,111 +1,78 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
-const Sale_order = () => {
+import { Link } from 'react-router-dom';
+
+const SaleOrder = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-blue-100">
       {/* Header */}
-      <header className="bg-white shadow p-4 flex justify-between items-center">
+      <header className="bg-white shadow-md flex justify-between items-center p-6 rounded-b-lg">
         <div className="relative">
           {/* Dropdown Button */}
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="text-xl font-semibold bg-gray-200 px-4 py-2 rounded-lg"
+            className="text-lg font-bold text-gray-800 bg-blue-600 px-5 py-2 rounded-lg flex items-center"
           >
-            All Sales Orders ▼
+            All Sales Orders
+            <span className="ml-2 transform transition-transform duration-200">{dropdownOpen ? '▲' : '▼'}</span>
           </button>
 
           {/* Dropdown Menu */}
           {dropdownOpen && (
-            <div className="absolute left-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
-              <a href="/dorder" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                All
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                Draft
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                Pending Approval
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                Approved
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                Confirmed
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                For Packaging
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                To be Shipped
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                Shipped
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                On Hold
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                New Custom View
-              </a>
+            <div className="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-md z-10">
+              {["All", "Draft", "Pending Approval", "Approved", "Confirmed", "For Packaging", "To be Shipped", "Shipped", "On Hold", "New Custom View"].map((status) => (
+                <Link to="#" key={status}>
+                  <div className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition">
+                    {status}
+                  </div>
+                </Link>
+              ))}
             </div>
           )}
         </div>
 
-        {/* Buttons on the Right */}
-        <div className="flex space-x-4">
-          <Link to='/dashboard/sale_form'>
-          <button className="bg-blue-600 text-white py-2 px-4 rounded">
-            + New
-          </button></Link>
-        </div>
+        {/* New Sale Button */}
+        <Link to="/dashboard/sale_form">
+          <button className="bg-blue-600 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-700 transition">
+            + New Sales Order
+          </button>
+        </Link>
       </header>
 
       {/* Main Content */}
-      <main className="p-6">
-        <div className="bg-white p-8 shadow rounded-lg">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold mb-4">
-              Start Managing Your Sales Activities!
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Create, customize and send professional Sales Orders.
-            </p>
-            <Link to='/dashboard/sale_form'>
-            <button className="bg-blue-600 text-white py-2 px-6 rounded-full">
-              Create Sales Order
-            </button></Link>
-          </div>
+      <main className="flex-1 p-8 bg-white rounded-lg shadow-lg mt-6 mx-4">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
+          Manage Your Sales Activities
+        </h2>
+        <p className="text-gray-600 text-center mb-6">
+          Create, customize, and send professional Sales Orders effortlessly.
+        </p>
+        <Link to="/dashboard/sale_form">
+          <button className="bg-blue-600 text-white py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition">
+            Create Sales Order
+          </button>
+        </Link>
 
-          {/* Life Cycle of a Sales Order */}
-          <div className="mt-12">
-            <h3 className="text-center text-lg font-semibold mb-6">
-              Life Cycle of a Sales Order
-            </h3>
-            <div className="flex justify-center items-center space-x-4">
-              {/* Life Cycle Steps */}
-              <div className="text-center">
-                <div className="bg-gray-100 p-4 rounded-lg">Customer Request</div>
-                <span className="block text-gray-500 text-sm">→</span>
+        {/* Life Cycle of a Sales Order */}
+        <section className="mt-10">
+          <h3 className="text-center text-xl font-semibold text-gray-800 mb-4">
+            Life Cycle of a Sales Order
+          </h3>
+          <div className="flex justify-around items-center">
+            {["Customer Request", "Create Sales Order", "Confirm Sales Order", "Convert to Invoice"].map((step, index) => (
+              <div key={index} className="text-center">
+                <div className="bg-blue-100 text-blue-600 p-4 rounded-lg shadow">
+                  {step}
+                </div>
+                {index < 3 && <span className="block text-gray-500 text-lg">→</span>}
               </div>
-              <div className="text-center">
-                <div className="bg-gray-100 p-4 rounded-lg">Create Sales Order</div>
-                <span className="block text-gray-500 text-sm">→</span>
-              </div>
-              <div className="text-center">
-                <div className="bg-gray-100 p-4 rounded-lg">Confirm Sales Order</div>
-                <span className="block text-gray-500 text-sm">→</span>
-              </div>
-              <div className="text-center">
-                <div className="bg-gray-100 p-4 rounded-lg">Convert to Invoice</div>
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );
 };
 
-export default Sale_order;
+export default SaleOrder;

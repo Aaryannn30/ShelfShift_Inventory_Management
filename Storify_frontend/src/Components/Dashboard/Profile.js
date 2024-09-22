@@ -38,32 +38,32 @@ const SpringModal = ({ isOpen, activeModal, setActiveSection, handleBack, handle
         <AnimatePresence>
             {isOpen && (
                 <motion.div
-                    initial={{ opacity: 0, x: 100 }} // Start off-screen to the right
-                    animate={{ opacity: 1, x: 0 }}   // Animate into view from the right
-                    exit={{ opacity: 0, x: 100 }}     // Animate out of view to the right
-                    className="fixed inset-y-0 right-0 z-50 flex items-start justify-end p-4 w-full max-w-sm" 
+                    initial={{ opacity: 0, scale: 0.9 }} // Start slightly smaller
+                    animate={{ opacity: 1, scale: 1 }}    // Animate to full size
+                    exit={{ opacity: 0, scale: 0.9 }}      // Animate out to slightly smaller
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" 
                 >
                     <motion.div
                         onClick={(e) => e.stopPropagation()} // Prevent close when clicking inside modal
-                        className="bg-white text-indigo-600 p-6 rounded-lg shadow-xl cursor-default relative overflow-hidden w-full"
+                        className="bg-white text-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md"
                     >
                         <div className="relative z-10">
                             {activeModal === "All" ? (
                                 <>
-                                    <h3 className="text-2xl font-bold text-center mb-4">Options</h3>
+                                    <h3 className="text-2xl font-bold text-center mb-4">User Options</h3>
                                     <div className="grid gap-4">
                                         {/* Profile Option */}
                                         <button
                                             onClick={() => setActiveSection("Profile")}
-                                            className="bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded"
+                                            className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded transition duration-200"
                                         >
-                                            Profile
+                                            View Profile
                                         </button>
 
                                         {/* Logout Option */}
                                         <button
                                             onClick={logout}
-                                            className="bg-red-200 hover:bg-red-300 text-red-800 py-2 px-4 rounded"
+                                            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition duration-200"
                                         >
                                             Logout
                                         </button>
@@ -72,15 +72,15 @@ const SpringModal = ({ isOpen, activeModal, setActiveSection, handleBack, handle
                             ) : (
                                 <>
                                     {/* Profile Section */}
-                                    <h3 className="text-2xl font-bold text-center mb-4">Profile</h3>
-                                    <p className="text-center text-sm mb-2">Username: {user.username}</p>
-                                    <p className="text-center text-sm mb-6">Email: {user.email}</p>
+                                    <h3 className="text-2xl font-bold text-center mb-4">Profile Details</h3>
+                                    <p className="text-center text-sm mb-2">Username: <strong>{user.username}</strong></p>
+                                    <p className="text-center text-sm mb-6">Email: <strong>{user.email}</strong></p>
 
                                     <div className="grid gap-4">
                                         {/* Back Option */}
                                         <button
                                             onClick={handleBack}
-                                            className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded w-full"
+                                            className="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded transition duration-200 w-full"
                                         >
                                             Back
                                         </button>
@@ -88,7 +88,7 @@ const SpringModal = ({ isOpen, activeModal, setActiveSection, handleBack, handle
                                         {/* Close Option */}
                                         <button
                                             onClick={handleClose}
-                                            className="bg-red-200 hover:bg-red-300 text-red-800 py-2 px-4 rounded w-full"
+                                            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition duration-200 w-full"
                                         >
                                             Close
                                         </button>

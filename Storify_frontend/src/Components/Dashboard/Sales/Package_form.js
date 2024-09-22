@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Package_form = () => {
+const PackageForm = () => {
   const [customerName, setCustomerName] = useState('');
   const [salesOrder, setSalesOrder] = useState('');
   const [packageSlip, setPackageSlip] = useState('');
@@ -28,9 +28,9 @@ const Package_form = () => {
   };
 
   return (
-    <div className="p-8 bg-gray-100 h-screen">
-      <div className="max-w-4xl mx-auto bg-white p-6 rounded shadow-lg">
-        <h1 className="text-2xl font-semibold mb-6">New Package</h1>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white p-6">
+      <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 className="text-3xl font-bold text-blue-700 mb-6">Create New Package</h1>
         
         <div className="grid grid-cols-2 gap-6 mb-4">
           {/* Customer Name */}
@@ -38,7 +38,7 @@ const Package_form = () => {
             <label className="block text-gray-700 mb-2">Customer Name</label>
             <input
               type="text"
-              className="border rounded w-full p-2"
+              className="border rounded w-full p-3 focus:ring-2 focus:ring-blue-300"
               value={customerName}
               onChange={(e) => setCustomerName(e.target.value)}
               placeholder="Enter Customer Name"
@@ -49,7 +49,7 @@ const Package_form = () => {
           <div>
             <label className="block text-gray-700 mb-2">Sales Order#</label>
             <select
-              className="border rounded w-full p-2"
+              className="border rounded w-full p-3 focus:ring-2 focus:ring-blue-300"
               value={salesOrder}
               onChange={(e) => setSalesOrder(e.target.value)}
             >
@@ -64,7 +64,7 @@ const Package_form = () => {
             <label className="block text-gray-700 mb-2">Package Slip#</label>
             <input
               type="text"
-              className="border rounded w-full p-2"
+              className="border rounded w-full p-3 focus:ring-2 focus:ring-blue-300"
               value={packageSlip}
               onChange={(e) => setPackageSlip(e.target.value)}
               placeholder="Enter Package Slip#"
@@ -76,7 +76,7 @@ const Package_form = () => {
             <label className="block text-gray-700 mb-2">Date</label>
             <input
               type="date"
-              className="border rounded w-full p-2"
+              className="border rounded w-full p-3 focus:ring-2 focus:ring-blue-300"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
@@ -85,28 +85,28 @@ const Package_form = () => {
 
         {/* Items Section */}
         <div className="mb-6">
-          <h2 className="text-lg font-semibold mb-4">Items & Description</h2>
+          <h2 className="text-xl font-semibold text-blue-600 mb-4">Items & Description</h2>
           <table className="min-w-full bg-white mb-4">
             <thead>
-              <tr className="border-b">
-                <th className="text-left p-2">Description</th>
-                <th className="text-left p-2">Ordered</th>
-                <th className="text-left p-2">Packed</th>
-                <th className="text-left p-2">Quantity to Pack</th>
-                <th></th>
+              <tr className="border-b bg-blue-100">
+                <th className="text-left p-3">Description</th>
+                <th className="text-left p-3">Ordered</th>
+                <th className="text-left p-3">Packed</th>
+                <th className="text-left p-3">Quantity to Pack</th>
+                <th className="p-3"></th>
               </tr>
             </thead>
             <tbody>
               {items.map((item, index) => (
-                <tr key={index} className="border-b">
+                <tr key={index} className="border-b hover:bg-gray-50">
                   <td className="p-2">
                     <input
                       type="text"
-                      className="border rounded w-full p-1"
+                      className="border rounded w-full p-2 focus:ring-2 focus:ring-blue-300"
                       value={item.description}
                       onChange={(e) =>
-                        setItems(items.map((item, i) =>
-                          i === index ? { ...item, description: e.target.value } : item
+                        setItems(items.map((itm, i) =>
+                          i === index ? { ...itm, description: e.target.value } : itm
                         ))
                       }
                       placeholder="Enter item description"
@@ -115,11 +115,11 @@ const Package_form = () => {
                   <td className="p-2">
                     <input
                       type="number"
-                      className="border rounded w-full p-1"
+                      className="border rounded w-full p-2 focus:ring-2 focus:ring-blue-300"
                       value={item.ordered}
                       onChange={(e) =>
-                        setItems(items.map((item, i) =>
-                          i === index ? { ...item, ordered: e.target.value } : item
+                        setItems(items.map((itm, i) =>
+                          i === index ? { ...itm, ordered: e.target.value } : itm
                         ))
                       }
                       placeholder="Ordered"
@@ -128,11 +128,11 @@ const Package_form = () => {
                   <td className="p-2">
                     <input
                       type="number"
-                      className="border rounded w-full p-1"
+                      className="border rounded w-full p-2 focus:ring-2 focus:ring-blue-300"
                       value={item.packed}
                       onChange={(e) =>
-                        setItems(items.map((item, i) =>
-                          i === index ? { ...item, packed: e.target.value } : item
+                        setItems(items.map((itm, i) =>
+                          i === index ? { ...itm, packed: e.target.value } : itm
                         ))
                       }
                       placeholder="Packed"
@@ -141,20 +141,20 @@ const Package_form = () => {
                   <td className="p-2">
                     <input
                       type="number"
-                      className="border rounded w-full p-1"
+                      className="border rounded w-full p-2 focus:ring-2 focus:ring-blue-300"
                       value={item.toPack}
                       onChange={(e) =>
-                        setItems(items.map((item, i) =>
-                          i === index ? { ...item, toPack: e.target.value } : item
+                        setItems(items.map((itm, i) =>
+                          i === index ? { ...itm, toPack: e.target.value } : itm
                         ))
                       }
                       placeholder="Quantity to Pack"
                     />
                   </td>
-                  <td className="p-2">
+                  <td className="p-2 text-center">
                     <button
                       onClick={() => handleRemoveItem(index)}
-                      className="text-red-500 hover:text-red-700"
+                      className="text-red-500 hover:text-red-700 text-lg"
                     >
                       &times;
                     </button>
@@ -165,7 +165,7 @@ const Package_form = () => {
           </table>
           <button
             onClick={handleAddItem}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
           >
             + Add Item
           </button>
@@ -175,7 +175,7 @@ const Package_form = () => {
         <div className="mb-6">
           <label className="block text-gray-700 mb-2">Internal Notes</label>
           <textarea
-            className="border rounded w-full p-2"
+            className="border rounded w-full p-3 focus:ring-2 focus:ring-blue-300"
             rows="4"
             placeholder="Enter internal notes"
           ></textarea>
@@ -185,13 +185,13 @@ const Package_form = () => {
         <div className="flex justify-between">
           <button
             onClick={handleSave}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
           >
             Save
           </button>
           <button
             onClick={handleCancel}
-            className="bg-gray-500 text-white px-4 py-2 rounded"
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition"
           >
             Cancel
           </button>
@@ -201,4 +201,4 @@ const Package_form = () => {
   );
 };
 
-export default Package_form;
+export default PackageForm;
