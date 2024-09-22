@@ -202,6 +202,7 @@ const ItemForm = () => {
                 placeholder="Enter Name"
                 value={name}
                 required
+                
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
