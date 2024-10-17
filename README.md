@@ -61,18 +61,22 @@ ShelfShift is a robust and efficient inventory management system designed to str
    ```bash
    git clone https://github.com/yourusername/ShelfShift.git
    cd ShelfShift
+   
 
-  pip install -r requirements.txt
+   pip install -r requirements.txt
 
-  python manage.py migrate
+   python manage.py migrate
 
-  python manage.py runserver
+   python manage.py runserver
   
-  cd frontend
+   cd frontend
 
-  npm install
+   npm install
 
-  npm start
+   npm start
+   ```
+
+ 
 💡 Future Enhancements
 
 - Integration with third-party APIs for live stock tracking.
