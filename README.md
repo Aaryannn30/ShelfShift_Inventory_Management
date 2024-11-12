@@ -84,6 +84,6 @@ ShelfShift is a robust and efficient inventory management system designed to str
 - AI-powered stock prediction and recommendations.
 
 👨‍💻 Contributing
-- Contributions are welcome! Feel free to open an issue or submit a pull request. Make sure to follow the contribution guidelines.
+- Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 
