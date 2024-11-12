@@ -34,9 +34,6 @@ ShelfShift is a robust and efficient inventory management system designed to str
 - Secure **user login** and **authentication** system using Django's inbuilt auth tools.
 - Role-based access control to ensure secure operations.
 
-### 🗂️ Kanban View
-- Implemented a **Kanban view** for managing tasks, allowing easy drag-and-drop features for inventory task management.
-
 ---
 
 ## 🖥️ Screenshots & GIFs
